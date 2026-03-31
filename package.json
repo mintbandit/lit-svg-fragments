@@ -15,10 +15,12 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "storybook": "^10.3.3",
+    "@storybook/web-components-vite": "^10.3.3",
+    "lit": "^3.3.2"
   }
 }
