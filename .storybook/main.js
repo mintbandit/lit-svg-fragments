@@ -6,6 +6,9 @@ const config = {
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
   "addons": [],
-  "framework": "@storybook/web-components-vite"
+  "framework": "@storybook/web-components-vite",
+  features: {
+    interactions: false,
+  },
 };
 export default config;

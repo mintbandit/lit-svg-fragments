@@ -13,6 +13,9 @@ const preview = {
       },
       expanded: true,
     },
+    actions: {
+      disable: true,
+    },
   },
 };
 
