@@ -15,6 +15,12 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "format": "npm run format:eslint && npm run format:prettier",
+    "lint:eslint": "eslint",
+    "format:eslint": "eslint --fix",
+    "lint:prettier": "prettier \"**/*.js\" --check",
+    "format:prettier": "prettier \"**/*.js\" --write",
     "cem": "cem analyze",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -25,9 +31,18 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@storybook/web-components": "^10.3.3",
-    "@storybook/web-components-vite": "^10.3.3",
-    "storybook": "^10.3.3"
+    "@open-wc/eslint-config": "13.0.0",
+    "@storybook/web-components": "10.3.3",
+    "@storybook/web-components-vite": "10.3.3",
+    "eslint": "10.1.0",
+    "eslint-config-prettier": "10.1.8",
+    "prettier": "3.8.1",
+    "storybook": "10.3.3"
+  },
+  "overrides": {
+    "@open-wc/eslint-config": {
+      "eslint": "^10.1.0"
+    }
   },
   "customElements": "custom-elements.json"
 }
