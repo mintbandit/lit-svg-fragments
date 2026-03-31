@@ -115,3 +115,49 @@ export const createEllipse = ({
     />
   `;
 };
+
+/**
+ * Function to create an SVG line fragment
+ *
+ * @param {string|number} xStart - X coordinate of the line starting point. Equivalent of left css relative to top left of canvas
+ * @param {string|number} xEnd - X coordinate of the line ending point. Equivalent of left css relative to top left of canvas
+ * @param {string|number} yStart - Y coordinate of the line starting point. Equivalent of top css relative to top left of canvas
+ * @param {string|number} yEnd - Y coordinate of the line ending point. Equivalent of top css relative to top left of canvas
+ * @param {string} lineColor - Color of the Line. Overruled by stroke css rule on Line element.
+ * @param {string} lineDasharray - Dash array options of the line. Overruled by stroke-dasharray css rule on Line element.
+ * @param {string|number} lineDashoffset - Dash offset options of the line. Overruled by stroke-dashoffset css rule on Line element.
+ * @param {string} lineCap - Shape of the end of the line. Overruled by stroke-linecap css rule on Line element.
+ * @param {string|number} lineOpacity - Opacity of the line. Overruled by stroke-opacity css rule on Line element.
+ * @param {string|number} lineWidth - Width of the line. Overruled by stroke-width css rule on Line element.
+ * @param {number} pathLength - Relative length in units of line. Use with lineDasharray to influence styling of line.
+ * @returns {TemplateResult<2>}
+ */
+export const createLine = ({
+  xStart,
+  xEnd,
+  yStart,
+  yEnd,
+  lineColor,
+  lineDasharray,
+  lineDashoffset,
+  lineCap,
+  lineOpacity,
+  lineWidth,
+  pathLength,
+}) => {
+  return svg`
+    <line
+      x1=${xStart}
+      x2=${xEnd}
+      y1=${yStart}
+      y2=${yEnd}
+      stroke=${ifDefined(lineColor)}
+      stroke-dasharray=${ifDefined(lineDasharray)}
+      stroke-dashoffset=${ifDefined(lineDashoffset)}
+      stroke-linecap=${ifDefined(lineCap)}
+      stroke-opacity=${ifDefined(lineOpacity)}
+      stroke-width=${ifDefined(lineWidth)}
+      pathLength=${ifDefined(pathLength)}
+    />
+  `;
+};

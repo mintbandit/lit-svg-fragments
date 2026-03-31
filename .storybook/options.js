@@ -11,4 +11,6 @@ export const colors = [
   'transparent',
 ];
 
+export const linecap = ['not set', 'butt', 'round', 'square'];
+
 export const choice = attribute => (attribute === 'not set' ? '' : attribute);
