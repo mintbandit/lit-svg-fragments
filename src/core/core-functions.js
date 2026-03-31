@@ -66,3 +66,52 @@ export const createCircle = ({
     />
   `;
 };
+
+/**
+ * Function to create an SVG ellipse fragment
+ *
+ * @param {string|number} centerX - X coordinate for center of ellipse. Equivalent of left css relative to top left of canvas
+ * @param {string|number} centerY - Y coordinate for center of ellipse. Equivalent of top css relative to top left of canvas
+ * @param {string|number} radiusX - radius of ellipse of X axis.
+ * @param {string|number} radiusY - radius of ellipse of Y axis.
+ * @param {string} borderColor - Color of circumference of ellipse. Overruled by stroke css rule on ellipse element.
+ * @param {string} borderDasharray - Dash array options of circumference of ellipse. Overruled by stroke-dasharray css rule on ellipse element.
+ * @param {string|number} borderDashoffset - Dash offset options of circumference of ellipse. Overruled by stroke-dashoffset css rule on ellipse element.
+ * @param {string|number} borderOpacity - Opacity of circumference of ellipse. Overruled by stroke-opacity css rule on ellipse element.
+ * @param {string|number} borderWidth - Width of the circumference of ellipse. Half this value will be added to radius value increasing size of ellipse. Overruled by stroke-width css rule on ellipse element.
+ * @param {string} color - Color of ellipse. Overruled by fill css rule on ellipse element.
+ * @param {string|number} colorOpacity - Opacity of ellipse. Overruled by fill-opacity css rule on ellipse element.
+ * @param {number} pathLength - Relative length in units of circumference. Use with borderDasharray to influence styling of circumference.
+ * @returns {TemplateResult<2>} - svg fragment
+ */
+export const createEllipse = ({
+  centerX,
+  centerY,
+  radiusX,
+  radiusY,
+  borderColor,
+  borderDasharray,
+  borderDashoffset,
+  borderOpacity,
+  borderWidth,
+  color,
+  colorOpacity,
+  pathLength,
+}) => {
+  return svg`
+    <ellipse 
+      cx=${centerX} 
+      cy=${centerY} 
+      rx=${radiusX} 
+      ry=${radiusY} 
+      stroke=${ifDefined(borderColor)}
+      stroke-dasharray=${ifDefined(borderDasharray)}
+      stroke-dashoffset=${ifDefined(borderDashoffset)}
+      stroke-opacity=${ifDefined(borderOpacity)}
+      stroke-width=${ifDefined(borderWidth)}      
+      fill=${ifDefined(color)}
+      fill-opacity=${ifDefined(colorOpacity)}
+      pathLength=${ifDefined(pathLength)}
+    />
+  `;
+};
