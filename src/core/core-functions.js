@@ -213,3 +213,64 @@ export const createPolyline = ({
     />
   `;
 };
+
+/**
+ * Function to create an SVG rectangle fragment
+ *
+ * @param {string|number} xStart - X coordinate of the top left corner of rectangle.
+ * @param {string|number} yStart - Y coordinate of the top left corner of rectangle.
+ * @param {string|number} width - Width of the rectangle.
+ * @param {string|number} height - Height of the rectangle.
+ * @param {string|number} radiusX - Radius of the horizontal corners of the rectangle.
+ * @param {string|number} radiusY - Radius of the vertical corners of the rectangle.
+ * @param {string} borderColor - Color of the border of the rectangle. Overruled by stroke css rule on rectangle element.
+ * @param {string} borderDasharray - Dash array options of the border of the rectangle. Overruled by stroke-dasharray css rule on rectangle element.
+ * @param {string|number} borderDashoffset - Dash offset options of the border of the rectangle. Overruled by stroke-dashoffset css rule on rectangle element.
+ * @param {string} borderLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on rectangle element.
+ * @param {number} borderMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on rectangle element.
+ * @param {string|number} borderOpacity - Opacity of the border of the rectangle. Overruled by stroke-opacity css rule on rectangle element.
+ * @param {string|number} borderWidth - Width of the border of the rectangle. Half this value will be added to height/width value increasing size of rectangle. Overruled by stroke-width css rule on rectangle element.
+ * @param {string} color - Color of rectangle. Overruled by fill css rule on rectangle element.
+ * @param {string|number} colorOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
+ * @param {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
+ * @returns {TemplateResult<2>}
+ */
+export const createRectangle = ({
+  xStart,
+  yStart,
+  width,
+  height,
+  radiusX,
+  radiusY,
+  borderColor,
+  borderDasharray,
+  borderDashoffset,
+  borderLinejoin,
+  borderMiterlimit,
+  borderOpacity,
+  borderWidth,
+  color,
+  colorOpacity,
+  pathLength,
+}) => {
+  return svg`
+    <rect
+      x=${xStart}
+      y=${yStart} 
+      width=${width}
+      height=${height}
+      rx=${radiusX} 
+      ry=${radiusY}
+      stroke=${ifDefined(borderColor)}
+      stroke-dasharray=${ifDefined(borderDasharray)}
+      stroke-dashoffset=${ifDefined(borderDashoffset)}
+      stroke-linejoin=${ifDefined(borderLinejoin)}
+      stroke-miterlimit=${ifDefined(borderMiterlimit)}
+      stroke-opacity=${ifDefined(borderOpacity)}
+      stroke-width=${ifDefined(borderWidth)}
+      fill=${ifDefined(color)}
+      fill-opacity=${ifDefined(colorOpacity)}
+      pathLength=${ifDefined(pathLength)}
+    />
+  `;
+};

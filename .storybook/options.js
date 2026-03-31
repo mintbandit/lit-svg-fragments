@@ -13,6 +13,15 @@ export const colors = [
 
 export const linecap = ['not set', 'butt', 'round', 'square'];
 
+export const linejoin = [
+  'not set',
+  'arcs',
+  'bevel',
+  'miter',
+  'miter-clip',
+  'round',
+];
+
 export const fillRule = ['nonzero', 'evenodd'];
 
 export const choice = attribute => (attribute === 'not set' ? '' : attribute);
