@@ -161,3 +161,55 @@ export const createLine = ({
     />
   `;
 };
+
+/**
+ * Function to create an SVG polyline fragment
+ *
+ * @param {string} points - list of X,Y coordinates. Values relative to top left.
+ * @param {string} lineColor - Color of the polyline. Overruled by stroke css rule on polyline element.
+ * @param {string} lineDasharray - Dash array options of the polyline. Overruled by stroke-dasharray css rule on polyline element.
+ * @param {string|number} lineDashoffset - Dash offset options of the polyline. Overruled by stroke-dashoffset css rule on polyline element.
+ * @param {string} lineCap - Shape of the end of the polyline. Overruled by stroke-linecap css rule on polyline element.
+ * @param {string} linejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polyline element.
+ * @param {number} lineMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polyline element.
+ * @param {string|number} lineOpacity - Opacity of the polyline. Overruled by stroke-opacity css rule on polyline element.
+ * @param {string|number} lineWidth - Width of the polyline. Overruled by stroke-width css rule on polyline element.
+ * @param {string} color - Color of polyline. Overruled by fill css rule on polyline element.
+ * @param {string|number} colorOpacity - Opacity of polyline. Overruled by fill-opacity css rule on polyline element.
+ * @param {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polyline element
+ * @param {number} pathLength - Relative length in units of polyline. Use with lineDasharray to influence styling of polyline.
+ * @returns {TemplateResult<2>}
+ */
+export const createPolyline = ({
+  points,
+  lineColor,
+  lineDasharray,
+  lineDashoffset,
+  lineCap,
+  lineJoin,
+  lineMiterlimit,
+  lineOpacity,
+  lineWidth,
+  color,
+  colorOpacity,
+  colorRule,
+  pathLength,
+}) => {
+  return svg`
+    <polyline
+      points=${points} 
+      stroke=${ifDefined(lineColor)}
+      stroke-dasharray=${ifDefined(lineDasharray)}
+      stroke-dashoffset=${ifDefined(lineDashoffset)}
+      stroke-linecap=${ifDefined(lineCap)}    
+      stroke-linejoin=${ifDefined(lineJoin)}  
+      stroke-miterlimit=${ifDefined(lineMiterlimit)}
+      stroke-opacity=${ifDefined(lineOpacity)}
+      stroke-width=${ifDefined(lineWidth)}
+      fill=${ifDefined(color)}
+      fill-opacity=${ifDefined(colorOpacity)}
+      fill-rule=${ifDefined(colorRule)}
+      pathLength=${ifDefined(pathLength)}
+    />
+  `;
+};
