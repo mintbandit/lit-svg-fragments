@@ -274,3 +274,53 @@ export const createRectangle = ({
     />
   `;
 };
+
+/**
+ * Function to create an SVG polygon fragment
+ *
+ * @param {string} points - list of X,Y coordinates. Values relative to top left.
+ * @param {string} lineColor - Color of the polygon. Overruled by stroke css rule on polygon element.
+ * @param {string} lineDasharray - Dash array options of the polygon. Overruled by stroke-dasharray css rule on polygon element.
+ * @param {string|number} lineDashoffset - Dash offset options of the polygon. Overruled by stroke-dashoffset css rule on polygon element.
+ * @param {string} lineCap - Shape of the end of the polygon. Overruled by stroke-linecap css rule on polygon element.
+ * @param {string} linejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polygon element.
+ * @param {number} lineMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polygon element.
+ * @param {string|number} lineOpacity - Opacity of the polygon. Overruled by stroke-opacity css rule on polygon element.
+ * @param {string|number} lineWidth - Width of the polygon. Overruled by stroke-width css rule on polygon element.
+ * @param {string} color - Color of polygon. Overruled by fill css rule on polygon element.
+ * @param {string|number} colorOpacity - Opacity of polygon. Overruled by fill-opacity css rule on polygon element.
+ * @param {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polygon element
+ * @param {number} pathLength - Relative length in units of polygon. Use with lineDasharray to influence styling of polygon.
+ * @returns {TemplateResult<2>}
+ */
+export const createPolygon = ({
+  points,
+  lineColor,
+  lineDasharray,
+  lineDashoffset,
+  linejoin,
+  lineMiterlimit,
+  lineOpacity,
+  lineWidth,
+  color,
+  colorOpacity,
+  colorRule,
+  pathLength,
+}) => {
+  return svg`
+    <polygon
+      points=${points} 
+      stroke=${ifDefined(lineColor)}
+      stroke-dasharray=${ifDefined(lineDasharray)}
+      stroke-dashoffset=${ifDefined(lineDashoffset)}
+      stroke-linejoin=${ifDefined(linejoin)}
+      stroke-miterlimit=${ifDefined(lineMiterlimit)}
+      stroke-opacity=${ifDefined(lineOpacity)}
+      stroke-width=${ifDefined(lineWidth)}
+      fill=${ifDefined(color)}
+      fill-opacity=${ifDefined(colorOpacity)}
+      fill-rule=${ifDefined(colorRule)}
+      pathLength=${ifDefined(pathLength)}
+    />
+  `;
+};
