@@ -86,7 +86,7 @@ export default class SimpleRectangle extends LitElement {
     // Use with dasharray
     pathLength: { attribute: 'path-length', type: Number, reflect: true },
 
-    // N/A attributes on ellipse based on MDN docs
+    // N/A attributes on rectangle based on MDN docs
     //  equivalent css page says they apply, css inheritance only?
     // stroke-linecap
     // fill-rule
