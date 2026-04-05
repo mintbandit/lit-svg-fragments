@@ -1,10 +1,10 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimplePolyline from '../src/components/simple-polyline.js';
-import { colors, choice, linecap, fillRule } from '../.storybook/options.js';
+import SimpleLine from '../../src/components/basic/simple-line.js';
+import { colors, choice, linecap } from '../../.storybook/options.js';
 
-if (!customElements.get('simple-polyline')) {
-  customElements.define('simple-polyline', SimplePolyline);
+if (!customElements.get('simple-line')) {
+  customElements.define('simple-line', SimpleLine);
 }
 
 /**
@@ -14,29 +14,27 @@ if (!customElements.get('simple-polyline')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-polyline
+  <simple-line
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
-    points=${args.points}
+    x-start=${args.xStart}
+    x-end=${args.xEnd}
+    y-start=${args.yStart}
+    y-end=${args.yEnd}
     line-color=${ifDefined(choice(args.lineColor))}
     line-dasharray=${ifDefined(args.lineDasharray)}
     line-dashoffset=${ifDefined(args.lineDashoffset)}
     linecap=${ifDefined(choice(args.lineCap))}
-    linejoin=${ifDefined(args.lineJoin)}
-    line-miterlimit=${ifDefined(args.lineMiterlimit)}
     line-opacity=${ifDefined(args.lineOpacity)}
     line-width=${ifDefined(args.lineWidth)}
-    color=${ifDefined(choice(args.color))}
-    color-opacity=${ifDefined(args.colorOpacity)}
-    color-rule=${ifDefined(choice(args.colorRule))}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-polyline>
+  </simple-line>
 `;
 
 export default {
-  title: 'Components/SimplePolyline',
-  component: 'simple-polyline',
+  title: 'Basic Shapes/Line',
+  component: 'simple-line',
   parameters: {
     layout: 'padded',
   },
@@ -50,14 +48,6 @@ export default {
       control: 'select',
       options: linecap,
     },
-    color: {
-      control: 'select',
-      options: colors,
-    },
-    colorRule: {
-      control: 'select',
-      options: fillRule,
-    },
   },
 };
 
@@ -65,9 +55,12 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    points: '50,0 21,90 98,35 2,35 79,90',
+    xStart: 20,
+    xEnd: 50,
+    yStart: 10,
+    yEnd: 50,
     lineColor: 'black',
-    color: 'transparent',
+    lineWidth: '2',
     pathLength: 10,
   },
 };

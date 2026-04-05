@@ -1,5 +1,5 @@
 import { html, LitElement, css } from 'lit';
-import { createRectangle } from '../core/core-functions.js';
+import { createRectangle } from '../../core/core-functions.js';
 
 /**
  * A component that creates a simple SVG rectangle using the createRectangle

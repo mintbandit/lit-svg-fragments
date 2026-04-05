@@ -1,10 +1,10 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimplePolygon from '../src/components/simple-polygon.js';
-import { colors, choice, linecap, fillRule } from '../.storybook/options.js';
+import SimplePolyline from '../../src/components/basic/simple-polyline.js';
+import { colors, choice, linecap, fillRule } from '../../.storybook/options.js';
 
-if (!customElements.get('simple-polygon')) {
-  customElements.define('simple-polygon', SimplePolygon);
+if (!customElements.get('simple-polyline')) {
+  customElements.define('simple-polyline', SimplePolyline);
 }
 
 /**
@@ -14,7 +14,7 @@ if (!customElements.get('simple-polygon')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-polygon
+  <simple-polyline
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     points=${args.points}
@@ -31,12 +31,12 @@ const defaultTemplate = args => html`
     color-rule=${ifDefined(choice(args.colorRule))}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-polygon>
+  </simple-polyline>
 `;
 
 export default {
-  title: 'Components/SimplePolygon',
-  component: 'simple-polygon',
+  title: 'Basic Shapes/Polyline',
+  component: 'simple-polyline',
   parameters: {
     layout: 'padded',
   },

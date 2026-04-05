@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimpleCircle from '../src/components/simple-circle.js';
-import { colors, choice } from '../.storybook/options.js';
+import SimpleCircle from '../../src/components/basic/simple-circle.js';
+import { colors, choice } from '../../.storybook/options.js';
 
 if (!customElements.get('simple-circle')) {
   customElements.define('simple-circle', SimpleCircle);
@@ -33,7 +33,7 @@ const defaultTemplate = args => html`
 `;
 
 export default {
-  title: 'Components/SimpleCircle',
+  title: 'Basic Shapes/Circle',
   component: 'simple-circle',
   render: args => defaultTemplate(args),
   argTypes: {

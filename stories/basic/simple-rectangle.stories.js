@@ -1,10 +1,10 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimpleEllipse from '../src/components/simple-ellipse.js';
-import { colors, choice } from '../.storybook/options.js';
+import SimpleRectangle from '../../src/components/basic/simple-rectangle.js';
+import { colors, choice, linejoin } from '../../.storybook/options.js';
 
 if (!customElements.get('simple-ellipse')) {
-  customElements.define('simple-ellipse', SimpleEllipse);
+  customElements.define('simple-rectangle', SimpleRectangle);
 }
 
 /**
@@ -14,28 +14,32 @@ if (!customElements.get('simple-ellipse')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-ellipse
+  <simple-rectangle
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
+    x-start=${args.xStart}
+    y-start=${args.yStart}
+    width=${args.width}
+    height=${args.height}
     radius-x=${args.radiusX}
     radius-y=${args.radiusY}
-    center-x=${args.centerX}
-    center-y=${args.centerY}
     border-color=${ifDefined(choice(args.borderColor))}
     border-dasharray=${ifDefined(args.borderDasharray)}
     border-dashoffset=${ifDefined(args.borderDashoffset)}
+    border-linejoin=${ifDefined(choice(args.borderLinejoin))}
+    border-miterlimit=${ifDefined(args.borderMiterlimit)}
     border-opacity=${ifDefined(args.borderOpacity)}
     border-width=${ifDefined(args.borderWidth)}
     color=${ifDefined(choice(args.color))}
     color-opacity=${ifDefined(args.colorOpacity)}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-ellipse>
+  </simple-rectangle>
 `;
 
 export default {
-  title: 'Components/SimpleEllipse',
-  component: 'simple-ellipse',
+  title: 'Basic Shapes/Rectangle',
+  component: 'simple-rectangle',
   parameters: {
     layout: 'padded',
   },
@@ -44,6 +48,10 @@ export default {
     borderColor: {
       control: 'select',
       options: colors,
+    },
+    borderLinejoin: {
+      control: 'select',
+      options: linejoin,
     },
     color: {
       control: 'select',
@@ -56,10 +64,10 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    radiusX: 20,
-    radiusY: 10,
-    centerX: 50,
-    centerY: 50,
+    xStart: 50,
+    yStart: 50,
+    width: 20,
+    height: 40,
     pathLength: 10,
     borderWidth: '2',
   },

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import AnimatedCircle from '../src/components/animated/animated-circle.js';
+import AnimatedCircle from '../../src/components/animated/animated-circle.js';
 import {
   colors,
   choice,
@@ -9,7 +9,7 @@ import {
   animationCalcMode,
   animationFill,
   animateRestart,
-} from '../.storybook/options.js';
+} from '../../.storybook/options.js';
 
 if (!customElements.get('animated-circle')) {
   customElements.define('animated-circle', AnimatedCircle);

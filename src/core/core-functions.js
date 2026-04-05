@@ -16,7 +16,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 //  Not all are applicable to every element
 
 // TODO May need list all of them in javadocs or CEM for storybook demo.
-//  For only a subset will be documented.
+//  Only a subset will be documented initially.
 
 // Attributes evaluated
 //  - style -> All elements, if using this what is the point of the other attributes?

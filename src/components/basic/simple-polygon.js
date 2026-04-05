@@ -1,28 +1,28 @@
 import { html, LitElement, css } from 'lit';
-import { createPolyline } from '../core/core-functions.js';
+import { createPolygon } from '../../core/core-functions.js';
 
 /**
- * A component that creates a simple SVG polyline using the createPolyline
+ * A component that creates a simple SVG polygon using the createpolygon
  * function from core-functions
  *
- * @tag simple-polyline
+ * @tag simple-polygon
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
  * @property {string} points - list of X,Y coordinates. Values relative to top left.
- * @property {string} lineColor - Color of the border of the polyline. Overruled by stroke css rule on polyline element.
- * @property {string} lineDasharray - Dash array options of the border of the polyline. Overruled by stroke-dasharray css rule on polyline element.
- * @property {string} lineDashoffset - Dash offset options of the border of the polyline. Overruled by stroke-dashoffset css rule on polyline element.
- * @property {string} lineCap - Shape of the end of the line. Overruled by stroke-linecap css rule on polyline element.
- * @property {string} lineJoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polyline element.
- * @property {number} lineMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polyline element.
- * @property {string} lineOpacity - Opacity of the border of the polyline. Overruled by stroke-opacity css rule on polyline element.
- * @property {string} lineWidth - Width of the border of the polyline. Overruled by stroke-width css rule on polyline element.
- * @property {string} color - Color of polyline. Overruled by fill css rule on polyline element.
- * @property {string} colorOpacity - Opacity of polyline. Overruled by fill-opacity css rule on polyline element.
- * @property {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polyline element
+ * @property {string} lineColor - Color of the border of the polygon. Overruled by stroke css rule on polygon element.
+ * @property {string} lineDasharray - Dash array options of the border of the polygon. Overruled by stroke-dasharray css rule on polygon element.
+ * @property {string} lineDashoffset - Dash offset options of the border of the polygon. Overruled by stroke-dashoffset css rule on polygon element.
+ * @property {string} lineCap - Shape of the end of the line. Overruled by stroke-linecap css rule on polygon element.
+ * @property {string} lineJoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polygon element.
+ * @property {number} lineMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polygon element.
+ * @property {string} lineOpacity - Opacity of the border of the polygon. Overruled by stroke-opacity css rule on polygon element.
+ * @property {string} lineWidth - Width of the border of the polygon. Overruled by stroke-width css rule on polygon element.
+ * @property {string} color - Color of polygon. Overruled by fill css rule on polygon element.
+ * @property {string} colorOpacity - Opacity of polygon. Overruled by fill-opacity css rule on polygon element.
+ * @property {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polygon element
  * @property {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
  */
-export default class SimplePolyline extends LitElement {
+export default class SimplePolygon extends LitElement {
   static styles = css`
     :host {
       display: block;
@@ -77,7 +77,7 @@ export default class SimplePolyline extends LitElement {
   render() {
     return html`
       <svg height=${this.svgHeight} width=${this.svgWidth}>
-        ${createPolyline(this)}
+        ${createPolygon(this)}
       </svg>
     `;
   }
