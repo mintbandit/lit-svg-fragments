@@ -1,7 +1,13 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import SimplePolygon from '../../src/components/basic/simple-polygon.js';
-import { colors, choice, linecap, fillRule } from '../../.storybook/options.js';
+import {
+  colors,
+  choice,
+  strokeLinecap,
+  fillRule,
+  hideControls,
+} from '../../.storybook/options.js';
 
 if (!customElements.get('simple-polygon')) {
   customElements.define('simple-polygon', SimplePolygon);
@@ -48,7 +54,7 @@ export default {
     },
     lineCap: {
       control: 'select',
-      options: linecap,
+      options: strokeLinecap,
     },
     color: {
       control: 'select',
@@ -58,6 +64,19 @@ export default {
       control: 'select',
       options: fillRule,
     },
+    ...hideControls([
+      'svg-width',
+      'svg-height',
+      'line-color',
+      'line-dasharray',
+      'line-dashoffset',
+      'line-opacity',
+      'line-width',
+      'line-miterlimit',
+      'color-opacity',
+      'color-rule',
+      'path-length',
+    ]),
   },
 };
 

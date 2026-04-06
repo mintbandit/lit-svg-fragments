@@ -1,7 +1,12 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import SimpleRectangle from '../../src/components/basic/simple-rectangle.js';
-import { colors, choice, linejoin } from '../../.storybook/options.js';
+import {
+  colors,
+  choice,
+  strokeLinejoin,
+  hideControls,
+} from '../../.storybook/options.js';
 
 if (!customElements.get('simple-ellipse')) {
   customElements.define('simple-rectangle', SimpleRectangle);
@@ -51,12 +56,29 @@ export default {
     },
     borderLinejoin: {
       control: 'select',
-      options: linejoin,
+      options: strokeLinejoin,
     },
     color: {
       control: 'select',
       options: colors,
     },
+    ...hideControls([
+      'svg-width',
+      'svg-height',
+      'x-start',
+      'y-start',
+      'radius-x',
+      'radius-y',
+      'border-color',
+      'border-dasharray',
+      'border-dashoffset',
+      'border-linejoin',
+      'border-miterlimit',
+      'border-opacity',
+      'border-width',
+      'color-opacity',
+      'path-length',
+    ]),
   },
 };
 

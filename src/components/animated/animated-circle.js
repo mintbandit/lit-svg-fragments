@@ -30,7 +30,7 @@ import { createAnimate } from '../../core/core-functions.js';
  * @property {string} animationCalcMode - Interpolation mode for the animation
  * @property {string} animationDuration - Duration of animation. Required
  * @property {string} animationEnd - End value for animation
- * @property {string} animationColor - Color of animation
+ * @property {string} animationFill - Freeze or remove the last animation frame
  * @property {number} animateTo - Final value of attribute being animated
  * @property {number} animateFrom - Starting value of attribute being animated
  * @property {string} animateKeyPoints - simple duration of the animation
@@ -152,8 +152,8 @@ export default class AnimatedCircle extends LitElement {
       reflect: true,
     },
     // fill
-    animationColor: {
-      attribute: 'animation-color',
+    animationFill: {
+      attribute: 'animation-fill',
       type: String,
       reflect: true,
     },

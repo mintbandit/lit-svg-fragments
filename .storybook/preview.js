@@ -16,6 +16,11 @@ const preview = {
     actions: {
       disable: true,
     },
+    options: {
+      storySort: {
+        order: ['Basic Shapes', 'Animation'],
+      },
+    },
   },
 };
 

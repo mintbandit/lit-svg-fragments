@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import SimpleEllipse from '../../src/components/basic/simple-ellipse.js';
-import { colors, choice } from '../../.storybook/options.js';
+import { colors, choice, hideControls } from '../../.storybook/options.js';
 
 if (!customElements.get('simple-ellipse')) {
   customElements.define('simple-ellipse', SimpleEllipse);
@@ -49,6 +49,21 @@ export default {
       control: 'select',
       options: colors,
     },
+    ...hideControls([
+      'svg-width',
+      'svg-height',
+      'center-x',
+      'center-y',
+      'radius-x',
+      'radius-y',
+      'border-color',
+      'border-dasharray',
+      'border-dashoffset',
+      'border-opacity',
+      'border-width',
+      'color-opacity',
+      'path-length',
+    ]),
   },
 };
 

@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import SimpleCircle from '../../src/components/basic/simple-circle.js';
-import { colors, choice } from '../../.storybook/options.js';
+import { colors, choice, hideControls } from '../../.storybook/options.js';
 
 if (!customElements.get('simple-circle')) {
   customElements.define('simple-circle', SimpleCircle);
@@ -45,6 +45,19 @@ export default {
       control: 'select',
       options: colors,
     },
+    ...hideControls([
+      'svg-width',
+      'svg-height',
+      'center-x',
+      'center-y',
+      'border-color',
+      'border-dasharray',
+      'border-dashoffset',
+      'border-opacity',
+      'border-width',
+      'color-opacity',
+      'path-length',
+    ]),
   },
 };
 

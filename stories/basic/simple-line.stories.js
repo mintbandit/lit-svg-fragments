@@ -1,7 +1,12 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import SimpleLine from '../../src/components/basic/simple-line.js';
-import { colors, choice, linecap } from '../../.storybook/options.js';
+import {
+  colors,
+  choice,
+  strokeLinecap,
+  hideControls,
+} from '../../.storybook/options.js';
 
 if (!customElements.get('simple-line')) {
   customElements.define('simple-line', SimpleLine);
@@ -46,8 +51,22 @@ export default {
     },
     lineCap: {
       control: 'select',
-      options: linecap,
+      options: strokeLinecap,
     },
+    ...hideControls([
+      'svg-width',
+      'svg-height',
+      'x-start',
+      'x-end',
+      'y-start',
+      'y-end',
+      'line-color',
+      'line-dasharray',
+      'line-dashoffset',
+      'line-opacity',
+      'line-width',
+      'path-length',
+    ]),
   },
 };
 

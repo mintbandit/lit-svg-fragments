@@ -8,7 +8,8 @@ import {
   animationAdditive,
   animationCalcMode,
   animationFill,
-  animateRestart,
+  animationRestart,
+  hideControls,
 } from '../../.storybook/options.js';
 
 if (!customElements.get('animated-circle')) {
@@ -45,7 +46,7 @@ const defaultTemplate = args => html`
     animation-calc-mode=${ifDefined(choice(args.animationCalcMode))}
     animation-duration=${ifDefined(args.animationDuration)}
     animation-end=${ifDefined(args.animationEnd)}
-    animation-color=${ifDefined(args.animationColor)}
+    animation-fill=${ifDefined(args.animationFill)}
     animate-to=${ifDefined(args.animateTo)}
     animate-from=${ifDefined(args.animateFrom)}
     animate-key-points=${ifDefined(args.animateKeyPoints)}
@@ -86,14 +87,50 @@ export default {
       control: 'select',
       options: animationCalcMode,
     },
-    animationColor: {
+    animationFill: {
       control: 'select',
       options: animationFill,
     },
     animateRestart: {
       control: 'select',
-      options: animateRestart,
+      options: animationRestart,
     },
+    ...hideControls([
+      'svg-width',
+      'svg-height',
+      'center-x',
+      'center-y',
+      'border-color',
+      'border-dasharray',
+      'border-dashoffset',
+      'border-opacity',
+      'border-width',
+      'color-opacity',
+      'path-length',
+      // animation dupes
+      'animate-accumulative',
+      'animate-additive',
+      'animate-attribute-name',
+      'animate-attribute-type',
+      'animate-begin',
+      'animate-by',
+      'animate-calc-mode',
+      'animation-duration',
+      'animation-end',
+      'animation-fill',
+      'animate-to',
+      'animate-from',
+      'animate-from',
+      'animate-key-points',
+      'animate-key-splines',
+      'animate-key-times',
+      'animate-max',
+      'animate-min',
+      'animate-restart',
+      'animate-values',
+      'animate-repeat-count',
+      'animation-repeat-duration',
+    ]),
   },
 };
 

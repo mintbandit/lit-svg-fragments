@@ -340,7 +340,7 @@ export const createPolygon = ({
  * @param {string} animationCalcMode - Interpolation mode for the animation
  * @param {string} animationDuration - Duration of animation. Required
  * @param {string} animationEnd - End value for animation
- * @param {string} animationColor - Freeze or remove the last animation frame
+ * @param {string} animationFill - Freeze or remove the last animation frame
  * @param {number} animateTo - Final value of attribute being animated
  * @param {number} animateFrom - Starting value of attribute being animated
  * @param {string} animateKeyPoints - simple duration of the animation
@@ -364,7 +364,7 @@ export const createAnimate = ({
   animationCalcMode,
   animationDuration,
   animationEnd,
-  animationColor,
+  animationFill,
   animateTo,
   animateFrom,
   animateKeyPoints,
@@ -389,7 +389,7 @@ export const createAnimate = ({
       calcMode=${ifDefined(animationCalcMode)}
       dur=${ifDefined(animationDuration)}
       end=${ifDefined(animationEnd)}
-      fill=${ifDefined(animationColor)}
+      fill=${ifDefined(animationFill)}
       from=${ifDefined(animateFrom)}
       keyPoints=${ifDefined(animateKeyPoints)}
       keySplines=${ifDefined(animateKeySplines)}
