@@ -12,7 +12,7 @@ To run storybook:
 2. Generate the `custom element manifest` by executing `npm run cem`
 3. Launch Storybook by executing `npm run storybook`
 
-> Note: Failing to generate the `custom element manifest` will result in storybook
+> Note: Failing to generate the `custom element manifest` will result in storybook failing.
 
 ## Deployed Storybook
 

@@ -1,6 +1,5 @@
 import { html, LitElement, css } from 'lit';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { createAnimate } from '../../core/core-functions.js';
+import { createAnimate, createCircle } from '../../core/core-functions.js';
 
 /**
  * A component that creates an animated SVG circle using the createCircle
@@ -203,26 +202,38 @@ export default class AnimatedCircle extends LitElement {
     },
   };
 
-  // TODO how to combine createCircle and createAnimate
-  //  Once this is done then other shapes may be possible
   render() {
+    const {
+      centerX,
+      centerY,
+      radius,
+      borderColor,
+      borderDasharray,
+      borderDashoffset,
+      borderOpacity,
+      borderWidth,
+      color,
+      colorOpacity,
+      pathLength,
+    } = this;
     return html`
       <svg height=${this.svgHeight} width=${this.svgWidth}>
-        <circle
-          cx=${this.centerX}
-          cy=${this.centerY}
-          r=${this.radius}
-          stroke=${ifDefined(this.borderColor)}
-          stroke-dasharray=${ifDefined(this.borderDasharray)}
-          stroke-dashoffset=${ifDefined(this.borderDashoffset)}
-          stroke-opacity=${ifDefined(this.borderOpacity)}
-          stroke-width=${ifDefined(this.borderWidth)}
-          fill=${ifDefined(this.color)}
-          fill-opacity=${ifDefined(this.colorOpacity)}
-          pathLength=${ifDefined(this.pathLength)}
-        >
-          ${createAnimate(this)}
-        </circle>
+        ${createCircle(
+          {
+            centerX,
+            centerY,
+            radius,
+            borderColor,
+            borderDasharray,
+            borderDashoffset,
+            borderOpacity,
+            borderWidth,
+            color,
+            colorOpacity,
+            pathLength,
+          },
+          [createAnimate(this)],
+        )}
       </svg>
     `;
   }

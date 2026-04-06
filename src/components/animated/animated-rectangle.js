@@ -1,6 +1,5 @@
 import { html, LitElement, css } from 'lit';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { createAnimate } from '../../core/core-functions.js';
+import { createAnimate, createRectangle } from '../../core/core-functions.js';
 
 /**
  * A component that creates an animated SVG rectangle using the createRectangle
@@ -221,31 +220,48 @@ export default class AnimatedRectangle extends LitElement {
     },
   };
 
-  // TODO how to combine createRectangle and createAnimate
-  //  Once this is done then other shapes may be possible
   render() {
+    const {
+      xStart,
+      yStart,
+      width,
+      height,
+      radiusX,
+      radiusY,
+      borderColor,
+      borderDasharray,
+      borderDashoffset,
+      borderLinejoin,
+      borderMiterlimit,
+      borderOpacity,
+      borderWidth,
+      color,
+      colorOpacity,
+      pathLength,
+    } = this;
     return html`
       <svg height=${this.svgHeight} width=${this.svgWidth}>
-        <rect
-          x=${this.xStart}
-          y=${this.yStart}
-          width=${this.width}
-          height=${this.height}
-          rx=${this.radiusX}
-          ry=${this.radiusY}
-          stroke=${ifDefined(this.borderColor)}
-          stroke-dasharray=${ifDefined(this.borderDasharray)}
-          stroke-dashoffset=${ifDefined(this.borderDashoffset)}
-          stroke-linejoin=${ifDefined(this.borderLinejoin)}
-          stroke-miterlimit=${ifDefined(this.borderMiterlimit)}
-          stroke-opacity=${ifDefined(this.borderOpacity)}
-          stroke-width=${ifDefined(this.borderWidth)}
-          fill=${ifDefined(this.color)}
-          fill-opacity=${ifDefined(this.colorOpacity)}
-          pathLength=${ifDefined(this.pathLength)}
-        >
-          ${createAnimate(this)}
-        </rect>
+        ${createRectangle(
+          {
+            xStart,
+            yStart,
+            width,
+            height,
+            radiusX,
+            radiusY,
+            borderColor,
+            borderDasharray,
+            borderDashoffset,
+            borderLinejoin,
+            borderMiterlimit,
+            borderOpacity,
+            borderWidth,
+            color,
+            colorOpacity,
+            pathLength,
+          },
+          [createAnimate(this)],
+        )}
       </svg>
     `;
   }

@@ -1,4 +1,4 @@
-import { svg } from 'lit';
+import { svg, nothing } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 // TODO svg elements have a lot of attributes that can be applied
@@ -25,8 +25,9 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 // TODO long term function structure proposal
 //  -> svgFragmentFunction( <object> attributeValues, <array> childElements, <object> eventMap)
 //     - attributeValues -> values to be applied to each attribute on each svg element (Done)
-//     - childElement -> Many svg elements require innerHtml or text to function, e.g. <text> and animating elements
+//     - childElement -> Many svg elements require innerHtml or text to function, e.g. <text> and animating elements (working)
 //     - eventMap -> Use the spreadEvent lit-helper to add event listeners (Advanced usage)
+//  Not considered yet -> adding classnames
 
 // TODO list of attributes for SVGs
 //  https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute
@@ -52,21 +53,26 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
  * @param {string} color - Color of circle. Overruled by fill css rule on circle element.
  * @param {string|number} colorOpacity - Opacity of circle. Overruled by fill-opacity css rule on circle element.
  * @param {number} pathLength - Relative length in units of circumference. Use with borderDasharray to influence styling of circumference.
+ *
+ * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
  * @returns {TemplateResult<2>} - svg fragment
  */
-export const createCircle = ({
-  centerX,
-  centerY,
-  radius,
-  borderColor,
-  borderDasharray,
-  borderDashoffset,
-  borderOpacity,
-  borderWidth,
-  color,
-  colorOpacity,
-  pathLength,
-}) => {
+export const createCircle = (
+  {
+    centerX,
+    centerY,
+    radius,
+    borderColor,
+    borderDasharray,
+    borderDashoffset,
+    borderOpacity,
+    borderWidth,
+    color,
+    colorOpacity,
+    pathLength,
+  },
+  innerHtmlFragments = nothing,
+) => {
   return svg`
     <circle 
       cx=${centerX}
@@ -80,7 +86,9 @@ export const createCircle = ({
       fill=${ifDefined(color)}
       fill-opacity=${ifDefined(colorOpacity)}
       pathLength=${ifDefined(pathLength)}
-    />
+    >
+      ${innerHtmlFragments}
+    </circle>
   `;
 };
 
@@ -99,22 +107,27 @@ export const createCircle = ({
  * @param {string} color - Color of ellipse. Overruled by fill css rule on ellipse element.
  * @param {string|number} colorOpacity - Opacity of ellipse. Overruled by fill-opacity css rule on ellipse element.
  * @param {number} pathLength - Relative length in units of circumference. Use with borderDasharray to influence styling of circumference.
+ *
+ * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
  * @returns {TemplateResult<2>} - svg fragment
  */
-export const createEllipse = ({
-  centerX,
-  centerY,
-  radiusX,
-  radiusY,
-  borderColor,
-  borderDasharray,
-  borderDashoffset,
-  borderOpacity,
-  borderWidth,
-  color,
-  colorOpacity,
-  pathLength,
-}) => {
+export const createEllipse = (
+  {
+    centerX,
+    centerY,
+    radiusX,
+    radiusY,
+    borderColor,
+    borderDasharray,
+    borderDashoffset,
+    borderOpacity,
+    borderWidth,
+    color,
+    colorOpacity,
+    pathLength,
+  },
+  innerHtmlFragments = nothing,
+) => {
   return svg`
     <ellipse 
       cx=${centerX} 
@@ -129,7 +142,9 @@ export const createEllipse = ({
       fill=${ifDefined(color)}
       fill-opacity=${ifDefined(colorOpacity)}
       pathLength=${ifDefined(pathLength)}
-    />
+    >
+      ${innerHtmlFragments}   
+    </ellipse>
   `;
 };
 
@@ -147,21 +162,26 @@ export const createEllipse = ({
  * @param {string|number} lineOpacity - Opacity of the line. Overruled by stroke-opacity css rule on Line element.
  * @param {string|number} lineWidth - Width of the line. Overruled by stroke-width css rule on Line element.
  * @param {number} pathLength - Relative length in units of line. Use with lineDasharray to influence styling of line.
+ *
+ * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
  * @returns {TemplateResult<2>}
  */
-export const createLine = ({
-  xStart,
-  xEnd,
-  yStart,
-  yEnd,
-  lineColor,
-  lineDasharray,
-  lineDashoffset,
-  lineCap,
-  lineOpacity,
-  lineWidth,
-  pathLength,
-}) => {
+export const createLine = (
+  {
+    xStart,
+    xEnd,
+    yStart,
+    yEnd,
+    lineColor,
+    lineDasharray,
+    lineDashoffset,
+    lineCap,
+    lineOpacity,
+    lineWidth,
+    pathLength,
+  },
+  innerHtmlFragments = nothing,
+) => {
   return svg`
     <line
       x1=${xStart}
@@ -175,7 +195,9 @@ export const createLine = ({
       stroke-opacity=${ifDefined(lineOpacity)}
       stroke-width=${ifDefined(lineWidth)}
       pathLength=${ifDefined(pathLength)}
-    />
+    >
+      ${innerHtmlFragments}
+    </line>
   `;
 };
 
@@ -195,23 +217,28 @@ export const createLine = ({
  * @param {string|number} colorOpacity - Opacity of polyline. Overruled by fill-opacity css rule on polyline element.
  * @param {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polyline element
  * @param {number} pathLength - Relative length in units of polyline. Use with lineDasharray to influence styling of polyline.
+ *
+ * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
  * @returns {TemplateResult<2>}
  */
-export const createPolyline = ({
-  points,
-  lineColor,
-  lineDasharray,
-  lineDashoffset,
-  lineCap,
-  lineJoin,
-  lineMiterlimit,
-  lineOpacity,
-  lineWidth,
-  color,
-  colorOpacity,
-  colorRule,
-  pathLength,
-}) => {
+export const createPolyline = (
+  {
+    points,
+    lineColor,
+    lineDasharray,
+    lineDashoffset,
+    lineCap,
+    lineJoin,
+    lineMiterlimit,
+    lineOpacity,
+    lineWidth,
+    color,
+    colorOpacity,
+    colorRule,
+    pathLength,
+  },
+  innerHtmlFragments = nothing,
+) => {
   return svg`
     <polyline
       points=${points} 
@@ -227,7 +254,9 @@ export const createPolyline = ({
       fill-opacity=${ifDefined(colorOpacity)}
       fill-rule=${ifDefined(colorRule)}
       pathLength=${ifDefined(pathLength)}
-    />
+    >
+      ${innerHtmlFragments}
+    </polyline>
   `;
 };
 
@@ -250,26 +279,31 @@ export const createPolyline = ({
  * @param {string} color - Color of rectangle. Overruled by fill css rule on rectangle element.
  * @param {string|number} colorOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
  * @param {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
+ *
+ * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
  * @returns {TemplateResult<2>}
  */
-export const createRectangle = ({
-  xStart,
-  yStart,
-  width,
-  height,
-  radiusX,
-  radiusY,
-  borderColor,
-  borderDasharray,
-  borderDashoffset,
-  borderLinejoin,
-  borderMiterlimit,
-  borderOpacity,
-  borderWidth,
-  color,
-  colorOpacity,
-  pathLength,
-}) => {
+export const createRectangle = (
+  {
+    xStart,
+    yStart,
+    width,
+    height,
+    radiusX,
+    radiusY,
+    borderColor,
+    borderDasharray,
+    borderDashoffset,
+    borderLinejoin,
+    borderMiterlimit,
+    borderOpacity,
+    borderWidth,
+    color,
+    colorOpacity,
+    pathLength,
+  },
+  innerHtmlFragments = nothing,
+) => {
   return svg`
     <rect
       x=${xStart}
@@ -288,7 +322,9 @@ export const createRectangle = ({
       fill=${ifDefined(color)}
       fill-opacity=${ifDefined(colorOpacity)}
       pathLength=${ifDefined(pathLength)}
-    />
+    >
+      ${innerHtmlFragments}
+    </rect>
   `;
 };
 
@@ -308,22 +344,27 @@ export const createRectangle = ({
  * @param {string|number} colorOpacity - Opacity of polygon. Overruled by fill-opacity css rule on polygon element.
  * @param {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polygon element
  * @param {number} pathLength - Relative length in units of polygon. Use with lineDasharray to influence styling of polygon.
+ *
+ * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
  * @returns {TemplateResult<2>}
  */
-export const createPolygon = ({
-  points,
-  lineColor,
-  lineDasharray,
-  lineDashoffset,
-  linejoin,
-  lineMiterlimit,
-  lineOpacity,
-  lineWidth,
-  color,
-  colorOpacity,
-  colorRule,
-  pathLength,
-}) => {
+export const createPolygon = (
+  {
+    points,
+    lineColor,
+    lineDasharray,
+    lineDashoffset,
+    linejoin,
+    lineMiterlimit,
+    lineOpacity,
+    lineWidth,
+    color,
+    colorOpacity,
+    colorRule,
+    pathLength,
+  },
+  innerHtmlFragments = nothing,
+) => {
   return svg`
     <polygon
       points=${points} 
@@ -338,13 +379,16 @@ export const createPolygon = ({
       fill-opacity=${ifDefined(colorOpacity)}
       fill-rule=${ifDefined(colorRule)}
       pathLength=${ifDefined(pathLength)}
-    />
+    >
+      ${innerHtmlFragments}
+    </polygon>
   `;
 };
 
 // TODO will be a child element of another shape element
-//  Likely functions above will call this.
 //  More than one child element can be used to animate multiple attributes
+//  innerHtmlFragments args above checked with multiples of these and it works
+//  No additional Lit directives required at this time.
 /**
  * Function to create an SVG animation fragment
  *
@@ -394,7 +438,6 @@ export const createAnimate = ({
   animateRepeatCount,
   animateRepeatDuration,
 }) => {
-  // No options return nothing???
   return svg`
     <animate
       accumulate=${ifDefined(animateAccumulate)}
