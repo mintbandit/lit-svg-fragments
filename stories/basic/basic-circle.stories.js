@@ -2,6 +2,8 @@ import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import BasicCircle from '../../src/components/basic/basic-circle.js';
 import { colors, choice, hideControls } from '../../.storybook/options.js';
+import { page } from '../../.storybook/page.jsx';
+import markdown from './basic-circle.md?raw';
 
 if (!customElements.get('basic-circle')) {
   customElements.define('basic-circle', BasicCircle);
@@ -36,6 +38,11 @@ export default {
   title: 'Basic Shapes/Circle',
   component: 'basic-circle',
   render: args => defaultTemplate(args),
+  parameters: {
+    docs: {
+      page: () => page(markdown),
+    },
+  },
   argTypes: {
     borderColor: {
       control: 'select',

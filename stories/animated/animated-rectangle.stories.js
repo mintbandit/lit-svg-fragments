@@ -12,6 +12,8 @@ import {
   animationRestart,
   hideControls,
 } from '../../.storybook/options.js';
+import { page } from '../../.storybook/page.jsx';
+import markdown from './animated-circle.md?raw';
 
 if (!customElements.get('animated-ellipse')) {
   customElements.define('animated-rectangle', AnimatedRectangle);
@@ -71,10 +73,12 @@ const defaultTemplate = args => html`
 export default {
   title: 'Animation/Rectangle',
   component: 'animated-rectangle',
-  parameters: {
-    layout: 'padded',
-  },
   render: args => defaultTemplate(args),
+  parameters: {
+    docs: {
+      page: () => page(markdown),
+    },
+  },
   argTypes: {
     borderColor: {
       control: 'select',

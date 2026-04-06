@@ -7,6 +7,8 @@ import {
   strokeLinecap,
   hideControls,
 } from '../../.storybook/options.js';
+import { page } from '../../.storybook/page.jsx';
+import markdown from './basic-line.md?raw';
 
 if (!customElements.get('basic-line')) {
   customElements.define('basic-line', BasicLine);
@@ -40,10 +42,12 @@ const defaultTemplate = args => html`
 export default {
   title: 'Basic Shapes/Line',
   component: 'basic-line',
-  parameters: {
-    layout: 'padded',
-  },
   render: args => defaultTemplate(args),
+  parameters: {
+    docs: {
+      page: () => page(markdown),
+    },
+  },
   argTypes: {
     lineColor: {
       control: 'select',

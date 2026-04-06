@@ -8,6 +8,8 @@ import {
   fillRule,
   hideControls,
 } from '../../.storybook/options.js';
+import { page } from '../../.storybook/page.jsx';
+import markdown from './basic-polyline.md?raw';
 
 if (!customElements.get('basic-polyline')) {
   customElements.define('basic-polyline', BasicPolyline);
@@ -43,10 +45,12 @@ const defaultTemplate = args => html`
 export default {
   title: 'Basic Shapes/Polyline',
   component: 'basic-polyline',
-  parameters: {
-    layout: 'padded',
-  },
   render: args => defaultTemplate(args),
+  parameters: {
+    docs: {
+      page: () => page(markdown),
+    },
+  },
   argTypes: {
     lineColor: {
       control: 'select',

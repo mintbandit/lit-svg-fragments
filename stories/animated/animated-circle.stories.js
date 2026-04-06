@@ -11,6 +11,8 @@ import {
   animationRestart,
   hideControls,
 } from '../../.storybook/options.js';
+import { page } from '../../.storybook/page.jsx';
+import markdown from './animated-circle.md?raw';
 
 if (!customElements.get('animated-circle')) {
   customElements.define('animated-circle', AnimatedCircle);
@@ -66,6 +68,11 @@ export default {
   title: 'Animation/Circle',
   component: 'animated-circle',
   render: args => defaultTemplate(args),
+  parameters: {
+    docs: {
+      page: () => page(markdown),
+    },
+  },
   argTypes: {
     borderColor: {
       control: 'select',

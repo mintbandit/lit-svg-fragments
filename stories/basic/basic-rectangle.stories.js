@@ -7,6 +7,8 @@ import {
   strokeLinejoin,
   hideControls,
 } from '../../.storybook/options.js';
+import { page } from '../../.storybook/page.jsx';
+import markdown from './basic-rectangle.md?raw';
 
 if (!customElements.get('basic-ellipse')) {
   customElements.define('basic-rectangle', BasicRectangle);
@@ -45,10 +47,12 @@ const defaultTemplate = args => html`
 export default {
   title: 'Basic Shapes/Rectangle',
   component: 'basic-rectangle',
-  parameters: {
-    layout: 'padded',
-  },
   render: args => defaultTemplate(args),
+  parameters: {
+    docs: {
+      page: () => page(markdown),
+    },
+  },
   argTypes: {
     borderColor: {
       control: 'select',

@@ -2,6 +2,8 @@ import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import BasicEllipse from '../../src/components/basic/basic-ellipse.js';
 import { colors, choice, hideControls } from '../../.storybook/options.js';
+import { page } from '../../.storybook/page.jsx';
+import markdown from './basic-ellipse.md?raw';
 
 if (!customElements.get('basic-ellipse')) {
   customElements.define('basic-ellipse', BasicEllipse);
@@ -36,10 +38,12 @@ const defaultTemplate = args => html`
 export default {
   title: 'Basic Shapes/Ellipse',
   component: 'basic-ellipse',
-  parameters: {
-    layout: 'padded',
-  },
   render: args => defaultTemplate(args),
+  parameters: {
+    docs: {
+      page: () => page(markdown),
+    },
+  },
   argTypes: {
     borderColor: {
       control: 'select',

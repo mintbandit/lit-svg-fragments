@@ -32,12 +32,13 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@open-wc/eslint-config": "13.0.0",
-    "@storybook/web-components": "10.3.3",
-    "@storybook/web-components-vite": "10.3.3",
-    "eslint": "10.1.0",
+    "@storybook/addon-docs": "10.3.4",
+    "@storybook/web-components": "10.3.4",
+    "@storybook/web-components-vite": "10.3.4",
+    "eslint": "10.2.0",
     "eslint-config-prettier": "10.1.8",
     "prettier": "3.8.1",
-    "storybook": "10.3.3"
+    "storybook": "10.3.4"
   },
   "overrides": {
     "@open-wc/eslint-config": {
