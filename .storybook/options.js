@@ -117,3 +117,17 @@ export const animationCalcMode = [
  * @type {string[]}
  */
 export const animationRestart = ['not set', 'always', 'whenNotActive', 'never'];
+
+/**
+ * Available options for type attribute on <animateTransform> elements
+ *
+ * @type {string[]}
+ */
+export const animationType = [
+  'not set',
+  'translate',
+  'scale',
+  'rotate',
+  'skewX',
+  'skewY',
+];

@@ -389,8 +389,9 @@ export const createPolygon = (
 //  More than one child element can be used to animate multiple attributes
 //  innerHtmlFragments args above checked with multiples of these and it works
 //  No additional Lit directives required at this time.
+//  Can have child elements as well
 /**
- * Function to create an SVG animation fragment
+ * Function to create an SVG animate fragment
  *
  * @param {string} animateAccumulate - Add next animation onto previous one
  * @param {string} animateAdditive - Animation is an offset or delta
@@ -402,17 +403,17 @@ export const createPolygon = (
  * @param {string} animationDuration - Duration of animation. Required
  * @param {string} animationEnd - End value for animation
  * @param {string} animationFill - Freeze or remove the last animation frame
- * @param {number} animateTo - Final value of attribute being animated
  * @param {number} animateFrom - Starting value of attribute being animated
  * @param {string} animateKeyPoints - simple duration of the animation
  * @param {string} animateKeySplines - Set of Bézier curve control points
  * @param {string} animateKeyTimes - List of times to control animation
  * @param {string} animateMax - Maximum value of animation duration
  * @param {string} animateMin - Minimum value of animation duration
- * @param {string} animateRestart - Whether the animation can restart
- * @param {string} animateValues - List of values to be applied to attribute during animation
  * @param {string|number} animateRepeatCount - Number of times the animation repeats
  * @param {string} animateRepeatDuration - Total duration of animation
+ * @param {string} animateRestart - Whether the animation can restart
+ * @param {number} animateTo - Final value of attribute being animated
+ * @param {string} animateValues - List of values to be applied to attribute during animation
  * @returns {TemplateResult<2>}
  */
 export const createAnimate = ({
@@ -426,17 +427,17 @@ export const createAnimate = ({
   animationDuration,
   animationEnd,
   animationFill,
-  animateTo,
   animateFrom,
   animateKeyPoints,
   animateKeyTimes,
   animateKeySplines,
   animateMax,
   animateMin,
-  animateRestart,
-  animateValues,
   animateRepeatCount,
   animateRepeatDuration,
+  animateRestart,
+  animateTo,
+  animateValues,
 }) => {
   return svg`
     <animate
@@ -461,6 +462,164 @@ export const createAnimate = ({
       restart=${ifDefined(animateRestart)}
       to=${ifDefined(animateTo)}
       values=${ifDefined(animateValues)}      
+    />
+  `;
+};
+
+/**
+ * Function to create an SVG animateMotion fragment
+ *
+ * @param {string} animateAccumulate - Add next animation onto previous one
+ * @param {string} animateAdditive - Animation is an offset or delta
+ * @param {string} animationBegin - When the animation becomes active
+ * @param {string} animationBy - Relative offset value
+ * @param {string} animationCalcMode - Interpolation mode for the animation
+ * @param {string} animationDuration - Duration of animation. Required
+ * @param {string} animationEnd - End value for animation
+ * @param {string} animationFill - Freeze or remove the last animation frame
+ * @param {number} animateFrom - Starting value of attribute being animated
+ * @param {string} animateKeyPoints - simple duration of the animation
+ * @param {string} animateKeySplines - Set of Bézier curve control points
+ * @param {string} animateKeyTimes - List of times to control animation
+ * @param {string} animateMax - Maximum value of animation duration
+ * @param {string} animateMin - Minimum value of animation duration
+ * @param {string} animateOrigin - Origin of motion for an animation. No effect on SVG.
+ * @param {string} animatePath - Motion path, same as d property on <path>
+ * @param {string|number} animateRepeatCount - Number of times the animation repeats
+ * @param {string} animateRepeatDuration - Total duration of animation
+ * @param {string} animateRestart - Whether the animation can restart
+ * @param {string|number} animateRotate - How the animated element rotates as it moves
+ * @param {number} animateTo - Final value of attribute being animated
+ * @param {string} animateValues - List of values to be applied to attribute during animation
+ * @returns {TemplateResult<2>}
+ */
+export const createAnimateMotion = ({
+  animateAccumulate,
+  animateAdditive,
+  animationBegin,
+  animationBy,
+  animationCalcMode,
+  animationDuration,
+  animationEnd,
+  animationFill,
+  animateFrom,
+  animateKeyPoints,
+  animateKeyTimes,
+  animateKeySplines,
+  animateMax,
+  animateMin,
+  animateOrigin,
+  animatePath,
+  animateRepeatCount,
+  animateRepeatDuration,
+  animateRestart,
+  animateRotate,
+  animateTo,
+  animateValues,
+}) => {
+  return svg`
+    <animateMotion
+      accumulate=${ifDefined(animateAccumulate)}
+      additive=${ifDefined(animateAdditive)}
+      begin=${ifDefined(animationBegin)}
+      by=${ifDefined(animationBy)}
+      calcMode=${ifDefined(animationCalcMode)}
+      dur=${ifDefined(animationDuration)}
+      end=${ifDefined(animationEnd)}
+      fill=${ifDefined(animationFill)}
+      from=${ifDefined(animateFrom)}
+      keyPoints=${ifDefined(animateKeyPoints)}
+      keySplines=${ifDefined(animateKeySplines)}
+      keyTimes=${ifDefined(animateKeyTimes)}
+      max=${ifDefined(animateMax)}
+      min=${ifDefined(animateMin)}
+      origin=${ifDefined(animateOrigin)}
+      path=${ifDefined(animatePath)}
+      repeatCount=${ifDefined(animateRepeatCount)}
+      repeatDur=${ifDefined(animateRepeatDuration)}
+      restart=${ifDefined(animateRestart)}
+      rotate=${ifDefined(animateRotate)}
+      to=${ifDefined(animateTo)}
+      values=${ifDefined(animateValues)}
+    />
+  `;
+};
+
+/**
+ * Function to create an SVG animateTransform fragment
+ *
+ * @param {string} animateAccumulate - Add next animation onto previous one
+ * @param {string} animateAdditive - Animation is an offset or delta
+ * @param {string} animateAttributeName - CSS or attribute name to be animated
+ * @param {string} animateAttributeType - Deprecated, namespace of target attribute
+ * @param {string} animationBegin - When the animation becomes active
+ * @param {string} animationBy - Relative offset value
+ * @param {string} animationCalcMode - Interpolation mode for the animation
+ * @param {string} animationDuration - Duration of animation. Required
+ * @param {string} animationEnd - End value for animation
+ * @param {string} animationFill - Freeze or remove the last animation frame
+ * @param {number} animateFrom - Starting value of attribute being animated
+ * @param {string} animateKeyPoints - simple duration of the animation
+ * @param {string} animateKeySplines - Set of Bézier curve control points
+ * @param {string} animateKeyTimes - List of times to control animation
+ * @param {string} animateMax - Maximum value of animation duration
+ * @param {string} animateMin - Minimum value of animation duration
+ * @param {string|number} animateRepeatCount - Number of times the animation repeats
+ * @param {string} animateRepeatDuration - Total duration of animation
+ * @param {string} animateRestart - Whether the animation can restart
+ * @param {number} animateTo - Final value of attribute being animated
+ * @param {string} animateType - type of transformation
+ * @param {string} animateValues - List of values to be applied to attribute during animation
+ * @returns {TemplateResult<2>}
+ */
+export const createAnimateTransform = ({
+  animateAccumulate,
+  animateAdditive,
+  animateAttributeName,
+  animateAttributeType, // deprecated
+  animationBegin,
+  animationBy,
+  animationCalcMode,
+  animationDuration,
+  animationEnd,
+  animationFill,
+  animateFrom,
+  animateKeyPoints,
+  animateKeyTimes,
+  animateKeySplines,
+  animateMax,
+  animateMin,
+  animateRepeatCount,
+  animateRepeatDuration,
+  animateRestart,
+  animateTo,
+  animateType,
+  animateValues,
+}) => {
+  return svg`
+    <animateTransform
+      accumulate=${ifDefined(animateAccumulate)}
+      additive=${ifDefined(animateAdditive)}
+      attributeName=${ifDefined(animateAttributeName)}
+      attributeType=${ifDefined(animateAttributeType)}
+      begin=${ifDefined(animationBegin)}
+      by=${ifDefined(animationBy)}
+      calcMode=${ifDefined(animationCalcMode)}
+      dur=${ifDefined(animationDuration)}
+      end=${ifDefined(animationEnd)}
+      fill=${ifDefined(animationFill)}
+      from=${ifDefined(animateFrom)}
+      keyPoints=${ifDefined(animateKeyPoints)}
+      keySplines=${ifDefined(animateKeySplines)}
+      keyTimes=${ifDefined(animateKeyTimes)}
+      max=${ifDefined(animateMax)}
+      min=${ifDefined(animateMin)}
+      repeatCount=${ifDefined(animateRepeatCount)}
+      repeatDur=${ifDefined(animateRepeatDuration)}
+      restart=${ifDefined(animateRestart)}
+      to=${ifDefined(animateTo)}
+      type=${ifDefined(animateType)}
+      values=${ifDefined(animateValues)}
     />
   `;
 };
