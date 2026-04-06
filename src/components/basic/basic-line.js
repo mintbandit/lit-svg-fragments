@@ -2,10 +2,10 @@ import { html, LitElement, css } from 'lit';
 import { createLine } from '../../core/core-functions.js';
 
 /**
- * A component that creates a simple SVG Line using the createLine
+ * A component that creates a basic SVG Line using the createLine
  * function from core-functions
  *
- * @tag simple-line
+ * @tag basic-line
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
  * @property {number} xStart - starting X coordinate of the line. Equivalent of left css relative to top left of canvas
@@ -20,7 +20,7 @@ import { createLine } from '../../core/core-functions.js';
  * @property {string} lineWidth - Width of the Line. Overruled by stroke-width css rule on Line element.
  * @property {number} pathLength - Relative length in units of the Line. Use with lineDasharray to influence styling of circumference.
  */
-export default class SimpleLine extends LitElement {
+export default class BasicLine extends LitElement {
   static styles = css`
     :host {
       display: block;

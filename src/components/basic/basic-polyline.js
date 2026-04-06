@@ -2,10 +2,10 @@ import { html, LitElement, css } from 'lit';
 import { createPolyline } from '../../core/core-functions.js';
 
 /**
- * A component that creates a simple SVG polyline using the createPolyline
+ * A component that creates a basic SVG polyline using the createPolyline
  * function from core-functions
  *
- * @tag simple-polyline
+ * @tag basic-polyline
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
  * @property {string} points - list of X,Y coordinates. Values relative to top left.
@@ -22,7 +22,7 @@ import { createPolyline } from '../../core/core-functions.js';
  * @property {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polyline element
  * @property {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
  */
-export default class SimplePolyline extends LitElement {
+export default class BasicPolyline extends LitElement {
   static styles = css`
     :host {
       display: block;

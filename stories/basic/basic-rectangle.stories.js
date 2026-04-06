@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimpleRectangle from '../../src/components/basic/simple-rectangle.js';
+import BasicRectangle from '../../src/components/basic/basic-rectangle.js';
 import {
   colors,
   choice,
@@ -8,8 +8,8 @@ import {
   hideControls,
 } from '../../.storybook/options.js';
 
-if (!customElements.get('simple-ellipse')) {
-  customElements.define('simple-rectangle', SimpleRectangle);
+if (!customElements.get('basic-ellipse')) {
+  customElements.define('basic-rectangle', BasicRectangle);
 }
 
 /**
@@ -19,7 +19,7 @@ if (!customElements.get('simple-ellipse')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-rectangle
+  <basic-rectangle
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     x-start=${args.xStart}
@@ -39,12 +39,12 @@ const defaultTemplate = args => html`
     color-opacity=${ifDefined(args.colorOpacity)}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-rectangle>
+  </basic-rectangle>
 `;
 
 export default {
   title: 'Basic Shapes/Rectangle',
-  component: 'simple-rectangle',
+  component: 'basic-rectangle',
   parameters: {
     layout: 'padded',
   },

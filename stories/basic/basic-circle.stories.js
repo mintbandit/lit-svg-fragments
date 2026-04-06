@@ -1,10 +1,10 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimpleCircle from '../../src/components/basic/simple-circle.js';
+import BasicCircle from '../../src/components/basic/basic-circle.js';
 import { colors, choice, hideControls } from '../../.storybook/options.js';
 
-if (!customElements.get('simple-circle')) {
-  customElements.define('simple-circle', SimpleCircle);
+if (!customElements.get('basic-circle')) {
+  customElements.define('basic-circle', BasicCircle);
 }
 
 /**
@@ -14,7 +14,7 @@ if (!customElements.get('simple-circle')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-circle
+  <basic-circle
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     radius=${args.radius}
@@ -29,12 +29,12 @@ const defaultTemplate = args => html`
     color-opacity=${ifDefined(args.colorOpacity)}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-circle>
+  </basic-circle>
 `;
 
 export default {
   title: 'Basic Shapes/Circle',
-  component: 'simple-circle',
+  component: 'basic-circle',
   render: args => defaultTemplate(args),
   argTypes: {
     borderColor: {

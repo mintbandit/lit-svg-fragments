@@ -2,10 +2,10 @@ import { html, LitElement, css } from 'lit';
 import { createRectangle } from '../../core/core-functions.js';
 
 /**
- * A component that creates a simple SVG rectangle using the createRectangle
+ * A component that creates a basic SVG rectangle using the createRectangle
  * function from core-functions
  *
- * @tag simple-rectangle
+ * @tag basic-rectangle
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
  * @property {number} xStart - X coordinate of the top left corner of rectangle. Equivalent of left css relative to top left of canvas
@@ -25,7 +25,7 @@ import { createRectangle } from '../../core/core-functions.js';
  * @property {string} colorOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
  * @property {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
  */
-export default class SimpleRectangle extends LitElement {
+export default class BasicRectangle extends LitElement {
   static styles = css`
     :host {
       display: block;

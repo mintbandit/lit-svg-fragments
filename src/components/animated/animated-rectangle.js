@@ -3,7 +3,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { createAnimate } from '../../core/core-functions.js';
 
 /**
- * A component that creates a simple SVG rectangle using the createRectangle
+ * A component that creates an animated SVG rectangle using the createRectangle
  * function from core-functions
  *
  * @tag animated-rectangle

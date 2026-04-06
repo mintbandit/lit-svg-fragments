@@ -2,10 +2,10 @@ import { html, LitElement, css } from 'lit';
 import { createPolygon } from '../../core/core-functions.js';
 
 /**
- * A component that creates a simple SVG polygon using the createpolygon
+ * A component that creates a basic SVG polygon using the createPolygon
  * function from core-functions
  *
- * @tag simple-polygon
+ * @tag basic-polygon
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
  * @property {string} points - list of X,Y coordinates. Values relative to top left.
@@ -22,7 +22,7 @@ import { createPolygon } from '../../core/core-functions.js';
  * @property {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polygon element
  * @property {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
  */
-export default class SimplePolygon extends LitElement {
+export default class BasicPolygon extends LitElement {
   static styles = css`
     :host {
       display: block;

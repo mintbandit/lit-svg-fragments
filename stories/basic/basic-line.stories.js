@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimpleLine from '../../src/components/basic/simple-line.js';
+import BasicLine from '../../src/components/basic/basic-line.js';
 import {
   colors,
   choice,
@@ -8,8 +8,8 @@ import {
   hideControls,
 } from '../../.storybook/options.js';
 
-if (!customElements.get('simple-line')) {
-  customElements.define('simple-line', SimpleLine);
+if (!customElements.get('basic-line')) {
+  customElements.define('basic-line', BasicLine);
 }
 
 /**
@@ -19,7 +19,7 @@ if (!customElements.get('simple-line')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-line
+  <basic-line
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     x-start=${args.xStart}
@@ -34,12 +34,12 @@ const defaultTemplate = args => html`
     line-width=${ifDefined(args.lineWidth)}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-line>
+  </basic-line>
 `;
 
 export default {
   title: 'Basic Shapes/Line',
-  component: 'simple-line',
+  component: 'basic-line',
   parameters: {
     layout: 'padded',
   },

@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimplePolyline from '../../src/components/basic/simple-polyline.js';
+import BasicPolyline from '../../src/components/basic/basic-polyline.js';
 import {
   colors,
   choice,
@@ -9,8 +9,8 @@ import {
   hideControls,
 } from '../../.storybook/options.js';
 
-if (!customElements.get('simple-polyline')) {
-  customElements.define('simple-polyline', SimplePolyline);
+if (!customElements.get('basic-polyline')) {
+  customElements.define('basic-polyline', BasicPolyline);
 }
 
 /**
@@ -20,7 +20,7 @@ if (!customElements.get('simple-polyline')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-polyline
+  <basic-polyline
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     points=${args.points}
@@ -37,12 +37,12 @@ const defaultTemplate = args => html`
     color-rule=${ifDefined(choice(args.colorRule))}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-polyline>
+  </basic-polyline>
 `;
 
 export default {
   title: 'Basic Shapes/Polyline',
-  component: 'simple-polyline',
+  component: 'basic-polyline',
   parameters: {
     layout: 'padded',
   },

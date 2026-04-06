@@ -1,10 +1,10 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import SimpleEllipse from '../../src/components/basic/simple-ellipse.js';
+import BasicEllipse from '../../src/components/basic/basic-ellipse.js';
 import { colors, choice, hideControls } from '../../.storybook/options.js';
 
-if (!customElements.get('simple-ellipse')) {
-  customElements.define('simple-ellipse', SimpleEllipse);
+if (!customElements.get('basic-ellipse')) {
+  customElements.define('basic-ellipse', BasicEllipse);
 }
 
 /**
@@ -14,7 +14,7 @@ if (!customElements.get('simple-ellipse')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <simple-ellipse
+  <basic-ellipse
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     radius-x=${args.radiusX}
@@ -30,12 +30,12 @@ const defaultTemplate = args => html`
     color-opacity=${ifDefined(args.colorOpacity)}
     path-length=${ifDefined(args.pathLength)}
   >
-  </simple-ellipse>
+  </basic-ellipse>
 `;
 
 export default {
   title: 'Basic Shapes/Ellipse',
-  component: 'simple-ellipse',
+  component: 'basic-ellipse',
   parameters: {
     layout: 'padded',
   },
