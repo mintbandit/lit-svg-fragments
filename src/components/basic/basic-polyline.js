@@ -1,5 +1,5 @@
 import { html, LitElement, css } from 'lit';
-import { createPolyline } from '../../core/core-functions.js';
+import { createPolyline } from '../../core/core-shapes.js';
 
 /**
  * A component that creates a basic SVG polyline using the createPolyline

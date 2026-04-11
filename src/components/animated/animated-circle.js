@@ -1,5 +1,6 @@
 import { html, LitElement, css } from 'lit';
-import { createAnimate, createCircle } from '../../core/core-functions.js';
+import { createCircle } from '../../core/core-shapes.js';
+import { createAnimate } from '../../core/core-animation.js';
 
 /**
  * A component that creates an animated SVG circle using the createCircle

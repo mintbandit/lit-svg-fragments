@@ -1,5 +1,5 @@
 import { html, LitElement, css } from 'lit';
-import { createLine } from '../../core/core-functions.js';
+import { createLine } from '../../core/core-shapes.js';
 
 /**
  * A component that creates a basic SVG Line using the createLine

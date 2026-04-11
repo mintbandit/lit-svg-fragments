@@ -1,5 +1,5 @@
 import { html, LitElement, css } from 'lit';
-import { createPolygon } from '../../core/core-functions.js';
+import { createPolygon } from '../../core/core-shapes.js';
 
 /**
  * A component that creates a basic SVG polygon using the createPolygon

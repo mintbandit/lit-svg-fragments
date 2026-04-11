@@ -1,5 +1,5 @@
 import { html, LitElement, css } from 'lit';
-import { createEllipse } from '../../core/core-functions.js';
+import { createEllipse } from '../../core/core-shapes.js';
 
 /**
  * A component that creates a basic SVG ellipse using the createEllipse

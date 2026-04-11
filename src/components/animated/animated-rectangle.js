@@ -1,5 +1,6 @@
 import { html, LitElement, css } from 'lit';
-import { createAnimate, createRectangle } from '../../core/core-functions.js';
+import { createRectangle } from '../../core/core-shapes.js';
+import { createAnimate } from '../../core/core-animation.js';
 
 /**
  * A component that creates an animated SVG rectangle using the createRectangle
