@@ -8,21 +8,21 @@ import { createRectangle } from '../../core/core-functions.js';
  * @tag basic-rectangle
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
- * @property {number} xStart - X coordinate of the top left corner of rectangle. Equivalent of left css relative to top left of canvas
- * @property {number} yStart - Y coordinate of the top left corner of rectangle. Equivalent of top css relative to top left of canvas
+ * @property {number} x - X coordinate of the top left corner of rectangle. Equivalent of left css relative to top left of canvas
+ * @property {number} y - Y coordinate of the top left corner of rectangle. Equivalent of top css relative to top left of canvas
  * @property {number} width - Width of the rectangle.
  * @property {number} height - Height of the rectangle.
- * @property {number} radiusX - Radius of the horizontal corners of the rectangle.
- * @property {number} radiusY - Radius of the vertical corners of the rectangle.
- * @property {string} borderColor - Color of the border of the rectangle. Overruled by stroke css rule on rectangle element.
- * @property {string} borderDasharray - Dash array options of the border of the rectangle. Overruled by stroke-dasharray css rule on rectangle element.
- * @property {string} borderDashoffset - Dash offset options of the border of the rectangle. Overruled by stroke-dashoffset css rule on rectangle element.
- * @property {string} borderLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on rectangle element.
- * @property {number} borderMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on rectangle element.
- * @property {string} borderOpacity - Opacity of the border of the rectangle. Overruled by stroke-opacity css rule on rectangle element.
- * @property {string} borderWidth - Width of the border of the rectangle. Half this value will be added to height/width value increasing size of rectangle. Overruled by stroke-width css rule on rectangle element.
- * @property {string} color - Color of rectangle. Overruled by fill css rule on rectangle element.
- * @property {string} colorOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
+ * @property {number} rx - Radius of the horizontal corners of the rectangle.
+ * @property {number} ry - Radius of the vertical corners of the rectangle.
+ * @property {string} stroke - Color of the border of the rectangle. Overruled by stroke css rule on rectangle element.
+ * @property {string} strokeDasharray - Dash array options of the border of the rectangle. Overruled by stroke-dasharray css rule on rectangle element.
+ * @property {string} strokeDashoffset - Dash offset options of the border of the rectangle. Overruled by stroke-dashoffset css rule on rectangle element.
+ * @property {string} strokeLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on rectangle element.
+ * @property {number} strokeMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on rectangle element.
+ * @property {string} strokeOpacity - Opacity of the border of the rectangle. Overruled by stroke-opacity css rule on rectangle element.
+ * @property {string} strokeWidth - Width of the border of the rectangle. Half this value will be added to height/width value increasing size of rectangle. Overruled by stroke-width css rule on rectangle element.
+ * @property {string} fill - Color of rectangle. Overruled by fill css rule on rectangle element.
+ * @property {string} fillOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
  * @property {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
  */
 export default class BasicRectangle extends LitElement {
@@ -43,45 +43,43 @@ export default class BasicRectangle extends LitElement {
 
     // Dimensions
     // TODO all 6 can be % values -> must be string to support in demo
-    xStart: { attribute: 'x-start', type: Number, reflect: true },
-    yStart: { attribute: 'y-start', type: Number, reflect: true },
+    x: { type: Number, reflect: true },
+    y: { type: Number, reflect: true },
     width: { type: Number, reflect: true },
     height: { type: Number, reflect: true },
-    radiusX: { attribute: 'radius-x', type: Number, reflect: true },
-    radiusY: { attribute: 'radius-y', type: Number, reflect: true },
+    rx: { type: Number, reflect: true },
+    ry: { type: Number, reflect: true },
 
     // Style - css will overrule attributes
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke
-    borderColor: { attribute: 'border-color', type: String, reflect: true }, // stroke
-    borderDasharray: {
-      // stroke-dasharray
-      attribute: 'border-dasharray',
+    stroke: { type: String, reflect: true },
+    strokeDasharray: {
+      attribute: 'stroke-dasharray',
       type: String,
       reflect: true,
     },
-    borderDashoffset: {
-      // stroke-dashoffset
-      attribute: 'border-dashoffset',
+    strokeDashoffset: {
+      attribute: 'stroke-dashoffset',
       type: String,
       reflect: true,
     },
-    // borderLinecap: { attribute: 'border-linecap', type: String, reflect: true }, // stroke-linecap
-    borderLinejoin: {
-      attribute: 'border-linejoin',
+    // strokeLinecap: { attribute: 'stroke-linecap', type: String, reflect: true },
+    strokeLinejoin: {
+      attribute: 'stroke-linejoin',
       type: String,
       reflect: true,
-    }, // stroke-linejoin
-    borderMiterlimit: {
-      attribute: 'border-miterlimit',
+    },
+    strokeMiterlimit: {
+      attribute: 'stroke-miterlimit',
       type: Number,
       reflect: true,
-    }, // stroke-miterlimit
-    borderOpacity: { attribute: 'border-opacity', type: String, reflect: true }, // stroke-opacity
-    borderWidth: { attribute: 'border-width', type: String, reflect: true }, // stroke-width
+    },
+    strokeOpacity: { attribute: 'stroke-opacity', type: String, reflect: true },
+    strokeWidth: { attribute: 'stroke-width', type: String, reflect: true },
 
-    color: { type: String, reflect: true }, // fill
-    colorOpacity: { attribute: 'color-opacity', type: String, reflect: true }, // fill-opacity
-    // colorRule: { attribute: 'color-rule', type: String, reflect: true }, // fill-rule
+    fill: { type: String, reflect: true },
+    fillOpacity: { attribute: 'fill-opacity', type: String, reflect: true },
+    // fillRule: { attribute: 'fill-rule', type: String, reflect: true },
 
     // Use with dasharray
     pathLength: { attribute: 'path-length', type: Number, reflect: true },

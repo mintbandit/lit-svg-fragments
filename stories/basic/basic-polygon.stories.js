@@ -26,17 +26,16 @@ const defaultTemplate = args => html`
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     points=${args.points}
-    line-color=${ifDefined(choice(args.lineColor))}
-    line-dasharray=${ifDefined(args.lineDasharray)}
-    line-dashoffset=${ifDefined(args.lineDashoffset)}
-    linecap=${ifDefined(choice(args.lineCap))}
-    linejoin=${ifDefined(args.lineJoin)}
-    line-miterlimit=${ifDefined(args.lineMiterlimit)}
-    line-opacity=${ifDefined(args.lineOpacity)}
-    line-width=${ifDefined(args.lineWidth)}
-    color=${ifDefined(choice(args.color))}
-    color-opacity=${ifDefined(args.colorOpacity)}
-    color-rule=${ifDefined(choice(args.colorRule))}
+    stroke=${ifDefined(choice(args.stroke))}
+    stroke-dasharray=${ifDefined(args.strokeDasharray)}
+    stroke-dashoffset=${ifDefined(args.strokeDashoffset)}
+    stroke-linejoin=${ifDefined(choice(args.strokeLinejoin))}
+    stroke-miterlimit=${ifDefined(args.strokeMiterlimit)}
+    stroke-opacity=${ifDefined(args.strokeOpacity)}
+    stroke-width=${ifDefined(args.strokeWidth)}
+    fill=${ifDefined(choice(args.fill))}
+    fill-opacity=${ifDefined(args.fillOpacity)}
+    fill-rule=${ifDefined(choice(args.fillRule))}
     path-length=${ifDefined(args.pathLength)}
   >
   </basic-polygon>
@@ -52,33 +51,29 @@ export default {
     },
   },
   argTypes: {
-    lineColor: {
+    stroke: {
       control: 'select',
       options: colors,
     },
-    lineCap: {
-      control: 'select',
-      options: strokeLinecap,
-    },
-    color: {
+    fill: {
       control: 'select',
       options: colors,
     },
-    colorRule: {
+    fillRule: {
       control: 'select',
       options: fillRule,
     },
     ...hideControls([
       'svg-width',
       'svg-height',
-      'line-color',
-      'line-dasharray',
-      'line-dashoffset',
-      'line-opacity',
-      'line-width',
-      'line-miterlimit',
-      'color-opacity',
-      'color-rule',
+      'stroke-dasharray',
+      'stroke-dashoffset',
+      'stroke-linejoin',
+      'stroke-opacity',
+      'stroke-width',
+      'stroke-miterlimit',
+      'fill-opacity',
+      'fill-rule',
       'path-length',
     ]),
   },
@@ -89,8 +84,9 @@ export const Default = {
     svgWidth: 100,
     svgHeight: 100,
     points: '50,0 21,90 98,35 2,35 79,90',
-    lineColor: 'black',
-    color: 'transparent',
+    stroke: 'black',
+    fill: 'transparent',
     pathLength: 10,
+    fillRule: 'not set',
   },
 };

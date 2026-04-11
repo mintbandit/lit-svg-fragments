@@ -24,16 +24,16 @@ const defaultTemplate = args => html`
   <basic-line
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
-    x-start=${args.xStart}
-    x-end=${args.xEnd}
-    y-start=${args.yStart}
-    y-end=${args.yEnd}
-    line-color=${ifDefined(choice(args.lineColor))}
-    line-dasharray=${ifDefined(args.lineDasharray)}
-    line-dashoffset=${ifDefined(args.lineDashoffset)}
-    linecap=${ifDefined(choice(args.lineCap))}
-    line-opacity=${ifDefined(args.lineOpacity)}
-    line-width=${ifDefined(args.lineWidth)}
+    x1=${args.x1}
+    x2=${args.x2}
+    y1=${args.y1}
+    y2=${args.y2}
+    stroke=${ifDefined(choice(args.stroke))}
+    stroke-dasharray=${ifDefined(args.strokeDasharray)}
+    stroke-dashoffset=${ifDefined(args.strokeDashoffset)}
+    stroke-linecap=${ifDefined(choice(args.strokeLinecap))}
+    stroke-opacity=${ifDefined(args.strokeOpacity)}
+    stroke-width=${ifDefined(args.strokeWidth)}
     path-length=${ifDefined(args.pathLength)}
   >
   </basic-line>
@@ -49,26 +49,22 @@ export default {
     },
   },
   argTypes: {
-    lineColor: {
+    stroke: {
       control: 'select',
       options: colors,
     },
-    lineCap: {
+    strokeLinecap: {
       control: 'select',
       options: strokeLinecap,
     },
     ...hideControls([
       'svg-width',
       'svg-height',
-      'x-start',
-      'x-end',
-      'y-start',
-      'y-end',
-      'line-color',
-      'line-dasharray',
-      'line-dashoffset',
-      'line-opacity',
-      'line-width',
+      'stroke-dasharray',
+      'stroke-dashoffset',
+      'stroke-linecap',
+      'stroke-opacity',
+      'stroke-width',
       'path-length',
     ]),
   },
@@ -78,12 +74,13 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    xStart: 20,
-    xEnd: 50,
-    yStart: 10,
-    yEnd: 50,
-    lineColor: 'black',
-    lineWidth: '2',
+    x1: 20,
+    x2: 50,
+    y1: 10,
+    y2: 50,
+    stroke: 'black',
+    strokeWidth: '2',
     pathLength: 10,
+    strokeLinecap: 'not set',
   },
 };

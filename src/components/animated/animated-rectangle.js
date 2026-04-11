@@ -8,44 +8,44 @@ import { createAnimate, createRectangle } from '../../core/core-functions.js';
  * @tag animated-rectangle
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
- * @property {number} xStart - X coordinate of the top left corner of rectangle. Equivalent of left css relative to top left of canvas
- * @property {number} yStart - Y coordinate of the top left corner of rectangle. Equivalent of top css relative to top left of canvas
+ * @property {number} x - X coordinate of the top left corner of rectangle. Equivalent of left css relative to top left of canvas
+ * @property {number} y - Y coordinate of the top left corner of rectangle. Equivalent of top css relative to top left of canvas
  * @property {number} width - Width of the rectangle.
  * @property {number} height - Height of the rectangle.
- * @property {number} radiusX - Radius of the horizontal corners of the rectangle.
- * @property {number} radiusY - Radius of the vertical corners of the rectangle.
- * @property {string} borderColor - Color of the border of the rectangle. Overruled by stroke css rule on rectangle element.
- * @property {string} borderDasharray - Dash array options of the border of the rectangle. Overruled by stroke-dasharray css rule on rectangle element.
- * @property {string} borderDashoffset - Dash offset options of the border of the rectangle. Overruled by stroke-dashoffset css rule on rectangle element.
- * @property {string} borderLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on rectangle element.
- * @property {number} borderMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on rectangle element.
- * @property {string} borderOpacity - Opacity of the border of the rectangle. Overruled by stroke-opacity css rule on rectangle element.
- * @property {string} borderWidth - Width of the border of the rectangle. Half this value will be added to height/width value increasing size of rectangle. Overruled by stroke-width css rule on rectangle element.
- * @property {string} color - Color of rectangle. Overruled by fill css rule on rectangle element.
- * @property {string} colorOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
+ * @property {number} rx - Radius of the horizontal corners of the rectangle.
+ * @property {number} ry - Radius of the vertical corners of the rectangle.
+ * @property {string} stroke - Color of the border of the rectangle. Overruled by stroke css rule on rectangle element.
+ * @property {string} strokeDasharray - Dash array options of the border of the rectangle. Overruled by stroke-dasharray css rule on rectangle element.
+ * @property {string} strokeDashoffset - Dash offset options of the border of the rectangle. Overruled by stroke-dashoffset css rule on rectangle element.
+ * @property {string} strokeLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on rectangle element.
+ * @property {number} strokeMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on rectangle element.
+ * @property {string} strokeOpacity - Opacity of the border of the rectangle. Overruled by stroke-opacity css rule on rectangle element.
+ * @property {string} strokeWidth - Width of the border of the rectangle. Half this value will be added to height/width value increasing size of rectangle. Overruled by stroke-width css rule on rectangle element.
+ * @property {string} fill - Color of rectangle. Overruled by fill css rule on rectangle element.
+ * @property {string} fillOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
  * @property {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
  *
- * @property {string} animateAccumulate - Add next animation onto previous one
- * @property {string} animateAdditive - Animation is an offset or delta
- * @property {string} animateAttributeName - CSS or attribute name to be animated
- * @property {string} animateAttributeType - Deprecated, namespace of target attribute
+ * @property {string} animationAccumulate - Add next animation onto previous one
+ * @property {string} animationAdditive - Animation is an offset or delta
+ * @property {string} animationAttributeName - CSS or attribute name to be animated
+ * @property {string} animationAttributeType - Deprecated, namespace of target attribute
  * @property {string} animationBegin - When the animation becomes active
  * @property {string} animationBy - Relative offset value
  * @property {string} animationCalcMode - Interpolation mode for the animation
  * @property {string} animationDuration - Duration of animation. Required
  * @property {string} animationEnd - End value for animation
  * @property {string} animationFill - Freeze or remove the last animation frame
- * @property {number} animateTo - Final value of attribute being animated
- * @property {number} animateFrom - Starting value of attribute being animated
- * @property {string} animateKeyPoints - simple duration of the animation
- * @property {string} animateKeySplines - Set of Bézier curve control points
- * @property {string} animateKeyTimes - List of times to control animation
- * @property {string} animateMax - Maximum value of animation duration
- * @property {string} animateMin - Minimum value of animation duration
- * @property {string} animateRestart - Whether the animation can restart
- * @property {string} animateValues - List of values to be applied to attribute during animation
- * @property {number} animateRepeatCount - Number of times the animation repeats
- * @property {string} animateRepeatDuration - Total duration of animation
+ * @property {number} animationTo - Final value of attribute being animated
+ * @property {number} animationFrom - Starting value of attribute being animated
+ * @property {string} animationKeyPoints - simple duration of the animation
+ * @property {string} animationKeySplines - Set of Bézier curve control points
+ * @property {string} animationKeyTimes - List of times to control animation
+ * @property {string} animationMax - Maximum value of animation duration
+ * @property {string} animationMin - Minimum value of animation duration
+ * @property {string} animationRestart - Whether the animation can restart
+ * @property {string} animationValues - List of values to be applied to attribute during animation
+ * @property {number} animationRepeatCount - Number of times the animation repeats
+ * @property {string} animationRepeatDuration - Total duration of animation
  */
 export default class AnimatedRectangle extends LitElement {
   static styles = css`
@@ -65,94 +65,92 @@ export default class AnimatedRectangle extends LitElement {
 
     // Dimensions
     // TODO all 6 can be % values -> must be string to support in demo
-    xStart: { attribute: 'x-start', type: Number, reflect: true },
-    yStart: { attribute: 'y-start', type: Number, reflect: true },
+    x: { type: Number, reflect: true },
+    y: { type: Number, reflect: true },
     width: { type: Number, reflect: true },
     height: { type: Number, reflect: true },
-    radiusX: { attribute: 'radius-x', type: Number, reflect: true },
-    radiusY: { attribute: 'radius-y', type: Number, reflect: true },
+    rx: { type: Number, reflect: true },
+    ry: { type: Number, reflect: true },
 
     // Style - css will overrule attributes
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke
-    borderColor: { attribute: 'border-color', type: String, reflect: true }, // stroke
-    borderDasharray: {
-      // stroke-dasharray
-      attribute: 'border-dasharray',
+    stroke: { type: String, reflect: true },
+    strokeDasharray: {
+      attribute: 'stroke-dasharray',
       type: String,
       reflect: true,
     },
-    borderDashoffset: {
-      // stroke-dashoffset
-      attribute: 'border-dashoffset',
+    strokeDashoffset: {
+      attribute: 'stroke-dashoffset',
       type: String,
       reflect: true,
     },
-    // borderLinecap: { attribute: 'border-linecap', type: String, reflect: true }, // stroke-linecap
-    borderLinejoin: {
-      attribute: 'border-linejoin',
+    // strokeLinecap: { attribute: 'stroke-linecap', type: String, reflect: true },
+    strokeLinejoin: {
+      attribute: 'stroke-linejoin',
       type: String,
       reflect: true,
-    }, // stroke-linejoin
-    borderMiterlimit: {
-      attribute: 'border-miterlimit',
+    },
+    strokeMiterlimit: {
+      attribute: 'stroke-miterlimit',
       type: Number,
       reflect: true,
-    }, // stroke-miterlimit
-    borderOpacity: { attribute: 'border-opacity', type: String, reflect: true }, // stroke-opacity
-    borderWidth: { attribute: 'border-width', type: String, reflect: true }, // stroke-width
+    },
+    strokeOpacity: { attribute: 'stroke-opacity', type: String, reflect: true },
+    strokeWidth: { attribute: 'stroke-width', type: String, reflect: true },
 
-    color: { type: String, reflect: true }, // fill
-    colorOpacity: { attribute: 'color-opacity', type: String, reflect: true }, // fill-opacity
-    // colorRule: { attribute: 'color-rule', type: String, reflect: true }, // fill-rule
+    fill: { type: String, reflect: true },
+    fillOpacity: { attribute: 'fill-opacity', type: String, reflect: true },
+    // fillRule: { attribute: 'fill-rule', type: String, reflect: true },
 
     // Use with dasharray
     pathLength: { attribute: 'path-length', type: Number, reflect: true },
 
-    // N/A attributes on reactangle based on MDN docs
+    // N/A attributes on rectangle based on MDN docs
     //  equivalent css page says they apply, css inheritance only?
     // stroke-linecap
     // fill-rule
 
     // animation options
     // accumulate
-    animateAccumulate: {
-      attribute: 'animate-accumulative',
+    animationAccumulate: {
+      attribute: 'animation-accumulative',
       type: String,
       reflect: true,
     },
     // additive
-    animateAdditive: {
-      attribute: 'animate-additive',
+    animationAdditive: {
+      attribute: 'animation-additive',
       type: String,
       reflect: true,
     },
     // attributeName
-    animateAttributeName: {
-      attribute: 'animate-attribute-name',
+    animationAttributeName: {
+      attribute: 'animation-attribute-name',
       type: String,
       reflect: true,
     },
     // attributeType
-    animateAttributeType: {
-      attribute: 'animate-attribute-type',
+    animationAttributeType: {
+      attribute: 'animation-attribute-type',
       type: String,
       reflect: true,
     },
     // begin
-    animateBegin: {
-      attribute: 'animate-begin',
+    animationBegin: {
+      attribute: 'animation-begin',
       type: String,
       reflect: true,
     },
     // by
-    animateBy: {
-      attribute: 'animate-by',
+    animationBy: {
+      attribute: 'animation-by',
       type: String,
       reflect: true,
     },
     // calcMode
-    animateCalcMode: {
-      attribute: 'animate-calc-mode',
+    animationCalcMode: {
+      attribute: 'animation-calc-mode',
       type: String,
       reflect: true,
     },
@@ -174,41 +172,45 @@ export default class AnimatedRectangle extends LitElement {
       type: String,
       reflect: true,
     },
-    animateTo: { attribute: 'animate-to', type: Number, reflect: true }, // to
-    animateFrom: { attribute: 'animate-from', type: Number, reflect: true }, // from
+    animationTo: { attribute: 'animation-to', type: Number, reflect: true }, // to
+    animationFrom: { attribute: 'animation-from', type: Number, reflect: true }, // from
     // keyPoints
-    animateKeyPoints: {
-      attribute: 'animate-key-points',
+    animationKeyPoints: {
+      attribute: 'animation-key-points',
       type: String,
       reflect: true,
     },
     // keySplines
-    animateKeySplines: {
-      attribute: 'animate-key-splines',
+    animationKeySplines: {
+      attribute: 'animation-key-splines',
       type: String,
       reflect: true,
     },
     // keyTimes
-    animateKeyTimes: {
-      attribute: 'animate-key-times',
+    animationKeyTimes: {
+      attribute: 'animation-key-times',
       type: String,
       reflect: true,
     },
     // max
-    animateMax: { attribute: 'animate-max', type: String, reflect: true },
+    animationMax: { attribute: 'animation-max', type: String, reflect: true },
     // min
-    animateMin: { attribute: 'animate-min', type: String, reflect: true },
+    animationMin: { attribute: 'animation-min', type: String, reflect: true },
     // restart
-    animateRestart: {
-      attribute: 'animate-restart',
+    animationRestart: {
+      attribute: 'animation-restart',
       type: String,
       reflect: true,
     },
-    animateValues: { attribute: 'animate-values', type: String, reflect: true }, // values
+    animationValues: {
+      attribute: 'animation-values',
+      type: String,
+      reflect: true,
+    }, // values
     // repeatCount
     // TODO can be string for 'indefinite'
-    animateRepeatCount: {
-      attribute: 'animate-repeat-count',
+    animationRepeatCount: {
+      attribute: 'animation-repeat-count',
       type: Number,
       reflect: true,
     },
@@ -222,42 +224,42 @@ export default class AnimatedRectangle extends LitElement {
 
   render() {
     const {
-      xStart,
-      yStart,
+      x,
+      y,
       width,
       height,
-      radiusX,
-      radiusY,
-      borderColor,
-      borderDasharray,
-      borderDashoffset,
-      borderLinejoin,
-      borderMiterlimit,
-      borderOpacity,
-      borderWidth,
-      color,
-      colorOpacity,
+      rx,
+      ry,
+      stroke,
+      strokeDasharray,
+      strokeDashoffset,
+      strokeLinejoin,
+      strokeMiterlimit,
+      strokeOpacity,
+      strokeWidth,
+      fill,
+      fillOpacity,
       pathLength,
     } = this;
     return html`
       <svg height=${this.svgHeight} width=${this.svgWidth}>
         ${createRectangle(
           {
-            xStart,
-            yStart,
+            x,
+            y,
             width,
             height,
-            radiusX,
-            radiusY,
-            borderColor,
-            borderDasharray,
-            borderDashoffset,
-            borderLinejoin,
-            borderMiterlimit,
-            borderOpacity,
-            borderWidth,
-            color,
-            colorOpacity,
+            rx,
+            ry,
+            stroke,
+            strokeDasharray,
+            strokeDashoffset,
+            strokeLinejoin,
+            strokeMiterlimit,
+            strokeOpacity,
+            strokeWidth,
+            fill,
+            fillOpacity,
             pathLength,
           },
           [createAnimate(this)],

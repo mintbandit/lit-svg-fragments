@@ -29,43 +29,43 @@ const defaultTemplate = args => html`
   <animated-rectangle
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
-    x-start=${args.xStart}
-    y-start=${args.yStart}
+    x=${args.x}
+    y=${args.y}
     width=${args.width}
     height=${args.height}
-    radius-x=${args.radiusX}
-    radius-y=${args.radiusY}
-    border-color=${ifDefined(choice(args.borderColor))}
-    border-dasharray=${ifDefined(args.borderDasharray)}
-    border-dashoffset=${ifDefined(args.borderDashoffset)}
-    border-linejoin=${ifDefined(choice(args.borderLinejoin))}
-    border-miterlimit=${ifDefined(args.borderMiterlimit)}
-    border-opacity=${ifDefined(args.borderOpacity)}
-    border-width=${ifDefined(args.borderWidth)}
-    color=${ifDefined(choice(args.color))}
-    color-opacity=${ifDefined(args.colorOpacity)}
+    rx=${args.rx}
+    ry=${args.ry}
+    stroke=${ifDefined(choice(args.stroke))}
+    stroke-dasharray=${ifDefined(args.strokeDasharray)}
+    stroke-dashoffset=${ifDefined(args.strokeDashoffset)}
+    stroke-linejoin=${ifDefined(choice(args.strokeLinejoin))}
+    stroke-miterlimit=${ifDefined(args.strokeMiterlimit)}
+    stroke-opacity=${ifDefined(args.strokeOpacity)}
+    stroke-width=${ifDefined(args.strokeWidth)}
+    fill=${ifDefined(choice(args.fill))}
+    fill-opacity=${ifDefined(args.fillOpacity)}
     path-length=${ifDefined(args.pathLength)}
-    animate-accumulate=${ifDefined(choice(args.animateAccumulate))}
-    animate-additive=${ifDefined(choice(args.animateAdditive))}
-    animate-attribute-name=${ifDefined(args.animateAttributeName)}
-    animate-attribute-type=${ifDefined(args.animateAttributeType)}
+    animation-accumulate=${ifDefined(choice(args.animationAccumulate))}
+    animation-additive=${ifDefined(choice(args.animationAdditive))}
+    animation-attribute-name=${ifDefined(args.animationAttributeName)}
+    animation-attribute-type=${ifDefined(args.animationAttributeType)}
     animation-begin=${ifDefined(args.animationBegin)}
     animation-by=${ifDefined(args.animationBy)}
     animation-calc-mode=${ifDefined(choice(args.animationCalcMode))}
     animation-duration=${ifDefined(args.animationDuration)}
     animation-end=${ifDefined(args.animationEnd)}
-    animation-fill=${ifDefined(args.animationFill)}
-    animate-to=${ifDefined(args.animateTo)}
-    animate-from=${ifDefined(args.animateFrom)}
-    animate-key-points=${ifDefined(args.animateKeyPoints)}
-    animate-key-splines=${ifDefined(args.animateKeySplines)}
-    animate-key-times=${ifDefined(args.animateKeyTimes)}
-    animate-max=${ifDefined(args.animateMax)}
-    animate-min=${ifDefined(args.animateMin)}
-    animate-restart=${ifDefined(choice(args.animateRestart))}
-    animate-values=${ifDefined(args.animateValues)}
-    animate-repeat-count=${ifDefined(args.animateRepeatCount)}
-    animate-repeat-duration=${ifDefined(args.animateRepeatDuration)}
+    animation-fill=${ifDefined(choice(args.animationFill))}
+    animation-to=${ifDefined(args.animationTo)}
+    animation-from=${ifDefined(args.animationFrom)}
+    animation-key-points=${ifDefined(args.animationKeyPoints)}
+    animation-key-splines=${ifDefined(args.animationKeySplines)}
+    animation-key-times=${ifDefined(args.animationKeyTimes)}
+    animation-max=${ifDefined(args.animationMax)}
+    animation-min=${ifDefined(args.animationMin)}
+    animation-restart=${ifDefined(choice(args.animationRestart))}
+    animation-values=${ifDefined(args.animationValues)}
+    animation-repeat-count=${ifDefined(args.animationRepeatCount)}
+    animation-repeat-duration=${ifDefined(args.animationRepeatDuration)}
   >
   </animated-rectangle>
 `;
@@ -80,27 +80,27 @@ export default {
     },
   },
   argTypes: {
-    borderColor: {
+    stroke: {
       control: 'select',
       options: colors,
     },
-    borderLinejoin: {
+    strokeLinejoin: {
       control: 'select',
       options: strokeLinejoin,
     },
-    color: {
+    fill: {
       control: 'select',
       options: colors,
     },
-    animateAccumulate: {
+    animationAccumulate: {
       control: 'select',
       options: animationAccumulate,
     },
-    animateAdditive: {
+    animationAdditive: {
       control: 'select',
       options: animationAdditive,
     },
-    animateCalcMode: {
+    animationCalcMode: {
       control: 'select',
       options: animationCalcMode,
     },
@@ -108,48 +108,43 @@ export default {
       control: 'select',
       options: animationFill,
     },
-    animateRestart: {
+    animationRestart: {
       control: 'select',
       options: animationRestart,
     },
     ...hideControls([
       'svg-width',
       'svg-height',
-      'x-start',
-      'y-start',
-      'radius-x',
-      'radius-y',
-      'border-color',
-      'border-dasharray',
-      'border-dashoffset',
-      'border-linejoin',
-      'border-miterlimit',
-      'border-opacity',
-      'border-width',
-      'color-opacity',
+      'stroke-dasharray',
+      'stroke-dashoffset',
+      'stroke-linejoin',
+      'stroke-miterlimit',
+      'stroke-opacity',
+      'stroke-width',
+      'fill-opacity',
       'path-length',
       // animation dupes
-      'animate-accumulative',
-      'animate-additive',
-      'animate-attribute-name',
-      'animate-attribute-type',
-      'animate-begin',
-      'animate-by',
-      'animate-calc-mode',
+      'animation-accumulative',
+      'animation-additive',
+      'animation-attribute-name',
+      'animation-attribute-type',
+      'animation-begin',
+      'animation-by',
+      'animation-calc-mode',
       'animation-duration',
       'animation-end',
       'animation-fill',
-      'animate-to',
-      'animate-from',
-      'animate-from',
-      'animate-key-points',
-      'animate-key-splines',
-      'animate-key-times',
-      'animate-max',
-      'animate-min',
-      'animate-restart',
-      'animate-values',
-      'animate-repeat-count',
+      'animation-to',
+      'animation-from',
+      'animation-from',
+      'animation-key-points',
+      'animation-key-splines',
+      'animation-key-times',
+      'animation-max',
+      'animation-min',
+      'animation-restart',
+      'animation-values',
+      'animation-repeat-count',
       'animation-repeat-duration',
     ]),
   },
@@ -159,20 +154,27 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    xStart: 50,
-    yStart: 50,
+    x: 50,
+    y: 50,
     width: 20,
     height: 40,
     pathLength: 10,
-    borderWidth: '2',
+    strokeWidth: '2',
+    strokeLinejoin: 'not set',
+    stroke: 'not set',
+    fill: 'not set',
 
-    animateAttributeName: 'y',
-    animateAttributeType: 'XML',
-    animateFrom: 10,
-    animateTo: 90,
+    animationAttributeName: 'y',
+    animationAttributeType: 'XML',
+    animationFrom: 10,
+    animationTo: 90,
     animationDuration: '1s',
-    animateRepeatCount: 5,
+    animationRepeatCount: 5,
 
-    animationFill: 'freeze', // or remove
+    animationFill: 'not set',
+    animationAccumulate: 'not set',
+    animationAdditive: 'not set',
+    animationCalcMode: 'not set',
+    animationRestart: 'not set',
   },
 };

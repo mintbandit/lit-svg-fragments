@@ -19,17 +19,17 @@ const defaultTemplate = args => html`
   <basic-ellipse
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
-    radius-x=${args.radiusX}
-    radius-y=${args.radiusY}
-    center-x=${args.centerX}
-    center-y=${args.centerY}
-    border-color=${ifDefined(choice(args.borderColor))}
-    border-dasharray=${ifDefined(args.borderDasharray)}
-    border-dashoffset=${ifDefined(args.borderDashoffset)}
-    border-opacity=${ifDefined(args.borderOpacity)}
-    border-width=${ifDefined(args.borderWidth)}
-    color=${ifDefined(choice(args.color))}
-    color-opacity=${ifDefined(args.colorOpacity)}
+    rx=${args.rx}
+    ry=${args.ry}
+    cx=${args.cx}
+    cy=${args.cy}
+    stroke=${ifDefined(choice(args.stroke))}
+    stroke-dasharray=${ifDefined(args.strokeDasharray)}
+    stroke-dashoffset=${ifDefined(args.strokeDashoffset)}
+    stroke-opacity=${ifDefined(args.strokeOpacity)}
+    stroke-width=${ifDefined(args.strokeWidth)}
+    fill=${ifDefined(choice(args.fill))}
+    fill-opacity=${ifDefined(args.fillOpacity)}
     path-length=${ifDefined(args.pathLength)}
   >
   </basic-ellipse>
@@ -45,27 +45,22 @@ export default {
     },
   },
   argTypes: {
-    borderColor: {
+    stroke: {
       control: 'select',
       options: colors,
     },
-    color: {
+    fill: {
       control: 'select',
       options: colors,
     },
     ...hideControls([
       'svg-width',
       'svg-height',
-      'center-x',
-      'center-y',
-      'radius-x',
-      'radius-y',
-      'border-color',
-      'border-dasharray',
-      'border-dashoffset',
-      'border-opacity',
-      'border-width',
-      'color-opacity',
+      'stroke-dasharray',
+      'stroke-dashoffset',
+      'stroke-opacity',
+      'stroke-width',
+      'fill-opacity',
       'path-length',
     ]),
   },
@@ -75,11 +70,13 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    radiusX: 20,
-    radiusY: 10,
-    centerX: 50,
-    centerY: 50,
+    rx: 20,
+    ry: 10,
+    cx: 50,
+    cy: 50,
     pathLength: 10,
-    borderWidth: '2',
+    strokeWidth: '2',
+    stroke: 'not set',
+    fill: 'not set',
   },
 };

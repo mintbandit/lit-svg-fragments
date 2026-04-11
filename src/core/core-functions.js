@@ -42,16 +42,16 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 /**
  * Function to create an SVG circle fragment
  *
- * @param {string|number} centerX - X coordinate for center of circle. Equivalent of left css relative to top left of canvas
- * @param {string|number} centerY - Y coordinate for center of circle. Equivalent of top css relative to top left of canvas
- * @param {string|number} radius - radius of circle.
- * @param {string} borderColor - Color of circumference of circle. Overruled by stroke css rule on circle element.
- * @param {string} borderDasharray - Dash array options of circumference of circle. Overruled by stroke-dasharray css rule on circle element.
- * @param {string|number} borderDashoffset - Dash offset options of circumference of circle. Overruled by stroke-dashoffset css rule on circle element.
- * @param {string|number} borderOpacity - Opacity of circumference of circle. Overruled by stroke-opacity css rule on circle element.
- * @param {string|number} borderWidth - Width of the circumference of circle. Half this value will be added to radius value increasing size of circle. Overruled by stroke-width css rule on circle element.
- * @param {string} color - Color of circle. Overruled by fill css rule on circle element.
- * @param {string|number} colorOpacity - Opacity of circle. Overruled by fill-opacity css rule on circle element.
+ * @param {string|number} cx - X coordinate for center of circle. Equivalent of left css relative to top left of canvas
+ * @param {string|number} cy - Y coordinate for center of circle. Equivalent of top css relative to top left of canvas
+ * @param {string|number} r - radius of circle.
+ * @param {string} stroke - Color of circumference of circle. Overruled by stroke css rule on circle element.
+ * @param {string} strokeDasharray - Dash array options of circumference of circle. Overruled by stroke-dasharray css rule on circle element.
+ * @param {string|number} strokeDashoffset - Dash offset options of circumference of circle. Overruled by stroke-dashoffset css rule on circle element.
+ * @param {string|number} strokeOpacity - Opacity of circumference of circle. Overruled by stroke-opacity css rule on circle element.
+ * @param {string|number} strokeWidth - Width of the circumference of circle. Half this value will be added to radius value increasing size of circle. Overruled by stroke-width css rule on circle element.
+ * @param {string} fill - Color of circle. Overruled by fill css rule on circle element.
+ * @param {string|number} fillOpacity - Opacity of circle. Overruled by fill-opacity css rule on circle element.
  * @param {number} pathLength - Relative length in units of circumference. Use with borderDasharray to influence styling of circumference.
  *
  * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
@@ -59,32 +59,32 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
  */
 export const createCircle = (
   {
-    centerX,
-    centerY,
-    radius,
-    borderColor,
-    borderDasharray,
-    borderDashoffset,
-    borderOpacity,
-    borderWidth,
-    color,
-    colorOpacity,
+    cx,
+    cy,
+    r,
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
     pathLength,
   },
   innerHtmlFragments = nothing,
 ) => {
   return svg`
     <circle 
-      cx=${centerX}
-      cy=${centerY}
-      r=${radius}
-      stroke=${ifDefined(borderColor)}
-      stroke-dasharray=${ifDefined(borderDasharray)}
-      stroke-dashoffset=${ifDefined(borderDashoffset)}
-      stroke-opacity=${ifDefined(borderOpacity)}
-      stroke-width=${ifDefined(borderWidth)}      
-      fill=${ifDefined(color)}
-      fill-opacity=${ifDefined(colorOpacity)}
+      cx=${cx}
+      cy=${cy}
+      r=${r}
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}      
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
       pathLength=${ifDefined(pathLength)}
     >
       ${innerHtmlFragments}
@@ -95,17 +95,17 @@ export const createCircle = (
 /**
  * Function to create an SVG ellipse fragment
  *
- * @param {string|number} centerX - X coordinate for center of ellipse. Equivalent of left css relative to top left of canvas
- * @param {string|number} centerY - Y coordinate for center of ellipse. Equivalent of top css relative to top left of canvas
- * @param {string|number} radiusX - radius of ellipse of X axis.
- * @param {string|number} radiusY - radius of ellipse of Y axis.
- * @param {string} borderColor - Color of circumference of ellipse. Overruled by stroke css rule on ellipse element.
- * @param {string} borderDasharray - Dash array options of circumference of ellipse. Overruled by stroke-dasharray css rule on ellipse element.
- * @param {string|number} borderDashoffset - Dash offset options of circumference of ellipse. Overruled by stroke-dashoffset css rule on ellipse element.
- * @param {string|number} borderOpacity - Opacity of circumference of ellipse. Overruled by stroke-opacity css rule on ellipse element.
- * @param {string|number} borderWidth - Width of the circumference of ellipse. Half this value will be added to radius value increasing size of ellipse. Overruled by stroke-width css rule on ellipse element.
- * @param {string} color - Color of ellipse. Overruled by fill css rule on ellipse element.
- * @param {string|number} colorOpacity - Opacity of ellipse. Overruled by fill-opacity css rule on ellipse element.
+ * @param {string|number} cx - X coordinate for center of ellipse. Equivalent of left css relative to top left of canvas
+ * @param {string|number} cy - Y coordinate for center of ellipse. Equivalent of top css relative to top left of canvas
+ * @param {string|number} rx - radius of ellipse of X axis.
+ * @param {string|number} ry - radius of ellipse of Y axis.
+ * @param {string} stroke - Color of circumference of ellipse. Overruled by stroke css rule on ellipse element.
+ * @param {string} strokeDasharray - Dash array options of circumference of ellipse. Overruled by stroke-dasharray css rule on ellipse element.
+ * @param {string|number} strokeDashoffset - Dash offset options of circumference of ellipse. Overruled by stroke-dashoffset css rule on ellipse element.
+ * @param {string|number} strokeOpacity - Opacity of circumference of ellipse. Overruled by stroke-opacity css rule on ellipse element.
+ * @param {string|number} strokeWidth - Width of the circumference of ellipse. Half this value will be added to radius value increasing size of ellipse. Overruled by stroke-width css rule on ellipse element.
+ * @param {string} fill - Color of ellipse. Overruled by fill css rule on ellipse element.
+ * @param {string|number} fillOpacity - Opacity of ellipse. Overruled by fill-opacity css rule on ellipse element.
  * @param {number} pathLength - Relative length in units of circumference. Use with borderDasharray to influence styling of circumference.
  *
  * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
@@ -113,34 +113,34 @@ export const createCircle = (
  */
 export const createEllipse = (
   {
-    centerX,
-    centerY,
-    radiusX,
-    radiusY,
-    borderColor,
-    borderDasharray,
-    borderDashoffset,
-    borderOpacity,
-    borderWidth,
-    color,
-    colorOpacity,
+    cx,
+    cy,
+    rx,
+    ry,
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
     pathLength,
   },
   innerHtmlFragments = nothing,
 ) => {
   return svg`
     <ellipse 
-      cx=${centerX} 
-      cy=${centerY} 
-      rx=${radiusX} 
-      ry=${radiusY} 
-      stroke=${ifDefined(borderColor)}
-      stroke-dasharray=${ifDefined(borderDasharray)}
-      stroke-dashoffset=${ifDefined(borderDashoffset)}
-      stroke-opacity=${ifDefined(borderOpacity)}
-      stroke-width=${ifDefined(borderWidth)}      
-      fill=${ifDefined(color)}
-      fill-opacity=${ifDefined(colorOpacity)}
+      cx=${cx} 
+      cy=${cy} 
+      rx=${rx} 
+      ry=${ry} 
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}      
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
       pathLength=${ifDefined(pathLength)}
     >
       ${innerHtmlFragments}   
@@ -151,16 +151,16 @@ export const createEllipse = (
 /**
  * Function to create an SVG line fragment
  *
- * @param {string|number} xStart - X coordinate of the line starting point. Equivalent of left css relative to top left of canvas
- * @param {string|number} xEnd - X coordinate of the line ending point. Equivalent of left css relative to top left of canvas
- * @param {string|number} yStart - Y coordinate of the line starting point. Equivalent of top css relative to top left of canvas
- * @param {string|number} yEnd - Y coordinate of the line ending point. Equivalent of top css relative to top left of canvas
- * @param {string} lineColor - Color of the Line. Overruled by stroke css rule on Line element.
- * @param {string} lineDasharray - Dash array options of the line. Overruled by stroke-dasharray css rule on Line element.
- * @param {string|number} lineDashoffset - Dash offset options of the line. Overruled by stroke-dashoffset css rule on Line element.
- * @param {string} lineCap - Shape of the end of the line. Overruled by stroke-linecap css rule on Line element.
- * @param {string|number} lineOpacity - Opacity of the line. Overruled by stroke-opacity css rule on Line element.
- * @param {string|number} lineWidth - Width of the line. Overruled by stroke-width css rule on Line element.
+ * @param {string|number} x1 - X coordinate of the line starting point. Equivalent of left css relative to top left of canvas
+ * @param {string|number} x2 - X coordinate of the line ending point. Equivalent of left css relative to top left of canvas
+ * @param {string|number} y1 - Y coordinate of the line starting point. Equivalent of top css relative to top left of canvas
+ * @param {string|number} y2 - Y coordinate of the line ending point. Equivalent of top css relative to top left of canvas
+ * @param {string} stroke - Color of the Line. Overruled by stroke css rule on Line element.
+ * @param {string} strokeDasharray - Dash array options of the line. Overruled by stroke-dasharray css rule on Line element.
+ * @param {string|number} strokeDashoffset - Dash offset options of the line. Overruled by stroke-dashoffset css rule on Line element.
+ * @param {string} strokeLinecap - Shape of the end of the line. Overruled by stroke-linecap css rule on Line element.
+ * @param {string|number} strokeOpacity - Opacity of the line. Overruled by stroke-opacity css rule on Line element.
+ * @param {string|number} strokeWidth - Width of the line. Overruled by stroke-width css rule on Line element.
  * @param {number} pathLength - Relative length in units of line. Use with lineDasharray to influence styling of line.
  *
  * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
@@ -168,32 +168,32 @@ export const createEllipse = (
  */
 export const createLine = (
   {
-    xStart,
-    xEnd,
-    yStart,
-    yEnd,
-    lineColor,
-    lineDasharray,
-    lineDashoffset,
-    lineCap,
-    lineOpacity,
-    lineWidth,
+    x1,
+    x2,
+    y1,
+    y2,
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinecap,
+    strokeOpacity,
+    strokeWidth,
     pathLength,
   },
   innerHtmlFragments = nothing,
 ) => {
   return svg`
     <line
-      x1=${xStart}
-      x2=${xEnd}
-      y1=${yStart}
-      y2=${yEnd}
-      stroke=${ifDefined(lineColor)}
-      stroke-dasharray=${ifDefined(lineDasharray)}
-      stroke-dashoffset=${ifDefined(lineDashoffset)}
-      stroke-linecap=${ifDefined(lineCap)}
-      stroke-opacity=${ifDefined(lineOpacity)}
-      stroke-width=${ifDefined(lineWidth)}
+      x1=${x1}
+      x2=${x2}
+      y1=${y1}
+      y2=${y2}
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linecap=${ifDefined(strokeLinecap)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
       pathLength=${ifDefined(pathLength)}
     >
       ${innerHtmlFragments}
@@ -205,17 +205,17 @@ export const createLine = (
  * Function to create an SVG polyline fragment
  *
  * @param {string} points - list of X,Y coordinates. Values relative to top left.
- * @param {string} lineColor - Color of the polyline. Overruled by stroke css rule on polyline element.
- * @param {string} lineDasharray - Dash array options of the polyline. Overruled by stroke-dasharray css rule on polyline element.
- * @param {string|number} lineDashoffset - Dash offset options of the polyline. Overruled by stroke-dashoffset css rule on polyline element.
- * @param {string} lineCap - Shape of the end of the polyline. Overruled by stroke-linecap css rule on polyline element.
- * @param {string} linejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polyline element.
- * @param {number} lineMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polyline element.
- * @param {string|number} lineOpacity - Opacity of the polyline. Overruled by stroke-opacity css rule on polyline element.
- * @param {string|number} lineWidth - Width of the polyline. Overruled by stroke-width css rule on polyline element.
- * @param {string} color - Color of polyline. Overruled by fill css rule on polyline element.
- * @param {string|number} colorOpacity - Opacity of polyline. Overruled by fill-opacity css rule on polyline element.
- * @param {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polyline element
+ * @param {string} stroke - Color of the polyline. Overruled by stroke css rule on polyline element.
+ * @param {string} strokeDasharray - Dash array options of the polyline. Overruled by stroke-dasharray css rule on polyline element.
+ * @param {string|number} strokeDashoffset - Dash offset options of the polyline. Overruled by stroke-dashoffset css rule on polyline element.
+ * @param {string} strokeLinecap - Shape of the end of the polyline. Overruled by stroke-linecap css rule on polyline element.
+ * @param {string} strokeLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polyline element.
+ * @param {number} strokeMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polyline element.
+ * @param {string|number} strokeOpacity - Opacity of the polyline. Overruled by stroke-opacity css rule on polyline element.
+ * @param {string|number} strokeWidth - Width of the polyline. Overruled by stroke-width css rule on polyline element.
+ * @param {string} fill - Color of polyline. Overruled by fill css rule on polyline element.
+ * @param {string|number} fillOpacity - Opacity of polyline. Overruled by fill-opacity css rule on polyline element.
+ * @param {string} fillRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polyline element
  * @param {number} pathLength - Relative length in units of polyline. Use with lineDasharray to influence styling of polyline.
  *
  * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
@@ -224,17 +224,17 @@ export const createLine = (
 export const createPolyline = (
   {
     points,
-    lineColor,
-    lineDasharray,
-    lineDashoffset,
-    lineCap,
-    lineJoin,
-    lineMiterlimit,
-    lineOpacity,
-    lineWidth,
-    color,
-    colorOpacity,
-    colorRule,
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinecap,
+    strokeLinejoin,
+    strokeMiterlimit,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
+    fillRule,
     pathLength,
   },
   innerHtmlFragments = nothing,
@@ -242,17 +242,17 @@ export const createPolyline = (
   return svg`
     <polyline
       points=${points} 
-      stroke=${ifDefined(lineColor)}
-      stroke-dasharray=${ifDefined(lineDasharray)}
-      stroke-dashoffset=${ifDefined(lineDashoffset)}
-      stroke-linecap=${ifDefined(lineCap)}    
-      stroke-linejoin=${ifDefined(lineJoin)}  
-      stroke-miterlimit=${ifDefined(lineMiterlimit)}
-      stroke-opacity=${ifDefined(lineOpacity)}
-      stroke-width=${ifDefined(lineWidth)}
-      fill=${ifDefined(color)}
-      fill-opacity=${ifDefined(colorOpacity)}
-      fill-rule=${ifDefined(colorRule)}
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linecap=${ifDefined(strokeLinecap)}    
+      stroke-linejoin=${ifDefined(strokeLinejoin)}  
+      stroke-miterlimit=${ifDefined(strokeMiterlimit)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
+      fill-rule=${ifDefined(fillRule)}
       pathLength=${ifDefined(pathLength)}
     >
       ${innerHtmlFragments}
@@ -263,21 +263,21 @@ export const createPolyline = (
 /**
  * Function to create an SVG rectangle fragment
  *
- * @param {string|number} xStart - X coordinate of the top left corner of rectangle.
- * @param {string|number} yStart - Y coordinate of the top left corner of rectangle.
+ * @param {string|number} x - X coordinate of the top left corner of rectangle.
+ * @param {string|number} y - Y coordinate of the top left corner of rectangle.
  * @param {string|number} width - Width of the rectangle.
  * @param {string|number} height - Height of the rectangle.
- * @param {string|number} radiusX - Radius of the horizontal corners of the rectangle.
- * @param {string|number} radiusY - Radius of the vertical corners of the rectangle.
- * @param {string} borderColor - Color of the border of the rectangle. Overruled by stroke css rule on rectangle element.
- * @param {string} borderDasharray - Dash array options of the border of the rectangle. Overruled by stroke-dasharray css rule on rectangle element.
- * @param {string|number} borderDashoffset - Dash offset options of the border of the rectangle. Overruled by stroke-dashoffset css rule on rectangle element.
- * @param {string} borderLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on rectangle element.
- * @param {number} borderMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on rectangle element.
- * @param {string|number} borderOpacity - Opacity of the border of the rectangle. Overruled by stroke-opacity css rule on rectangle element.
- * @param {string|number} borderWidth - Width of the border of the rectangle. Half this value will be added to height/width value increasing size of rectangle. Overruled by stroke-width css rule on rectangle element.
- * @param {string} color - Color of rectangle. Overruled by fill css rule on rectangle element.
- * @param {string|number} colorOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
+ * @param {string|number} rx - Radius of the horizontal corners of the rectangle.
+ * @param {string|number} ry - Radius of the vertical corners of the rectangle.
+ * @param {string} stroke - Color of the border of the rectangle. Overruled by stroke css rule on rectangle element.
+ * @param {string} strokeDasharray - Dash array options of the border of the rectangle. Overruled by stroke-dasharray css rule on rectangle element.
+ * @param {string|number} strokeDashoffset - Dash offset options of the border of the rectangle. Overruled by stroke-dashoffset css rule on rectangle element.
+ * @param {string} strokeLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on rectangle element.
+ * @param {number} strokeMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on rectangle element.
+ * @param {string|number} strokeOpacity - Opacity of the border of the rectangle. Overruled by stroke-opacity css rule on rectangle element.
+ * @param {string|number} strokeWidth - Width of the border of the rectangle. Half this value will be added to height/width value increasing size of rectangle. Overruled by stroke-width css rule on rectangle element.
+ * @param {string} fill - Color of rectangle. Overruled by fill css rule on rectangle element.
+ * @param {string|number} fillOpacity - Opacity of rectangle. Overruled by fill-opacity css rule on rectangle element.
  * @param {number} pathLength - Relative length in units of border. Use with borderDasharray to influence styling of border.
  *
  * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
@@ -285,42 +285,42 @@ export const createPolyline = (
  */
 export const createRectangle = (
   {
-    xStart,
-    yStart,
+    x,
+    y,
     width,
     height,
-    radiusX,
-    radiusY,
-    borderColor,
-    borderDasharray,
-    borderDashoffset,
-    borderLinejoin,
-    borderMiterlimit,
-    borderOpacity,
-    borderWidth,
-    color,
-    colorOpacity,
+    rx,
+    ry,
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinejoin,
+    strokeMiterlimit,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
     pathLength,
   },
   innerHtmlFragments = nothing,
 ) => {
   return svg`
     <rect
-      x=${xStart}
-      y=${yStart} 
+      x=${x}
+      y=${y} 
       width=${width}
       height=${height}
-      rx=${radiusX} 
-      ry=${radiusY}
-      stroke=${ifDefined(borderColor)}
-      stroke-dasharray=${ifDefined(borderDasharray)}
-      stroke-dashoffset=${ifDefined(borderDashoffset)}
-      stroke-linejoin=${ifDefined(borderLinejoin)}
-      stroke-miterlimit=${ifDefined(borderMiterlimit)}
-      stroke-opacity=${ifDefined(borderOpacity)}
-      stroke-width=${ifDefined(borderWidth)}
-      fill=${ifDefined(color)}
-      fill-opacity=${ifDefined(colorOpacity)}
+      rx=${rx} 
+      ry=${ry}
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linejoin=${ifDefined(strokeLinejoin)}
+      stroke-miterlimit=${ifDefined(strokeMiterlimit)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
       pathLength=${ifDefined(pathLength)}
     >
       ${innerHtmlFragments}
@@ -332,17 +332,16 @@ export const createRectangle = (
  * Function to create an SVG polygon fragment
  *
  * @param {string} points - list of X,Y coordinates. Values relative to top left.
- * @param {string} lineColor - Color of the polygon. Overruled by stroke css rule on polygon element.
- * @param {string} lineDasharray - Dash array options of the polygon. Overruled by stroke-dasharray css rule on polygon element.
- * @param {string|number} lineDashoffset - Dash offset options of the polygon. Overruled by stroke-dashoffset css rule on polygon element.
- * @param {string} lineCap - Shape of the end of the polygon. Overruled by stroke-linecap css rule on polygon element.
- * @param {string} linejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polygon element.
- * @param {number} lineMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polygon element.
- * @param {string|number} lineOpacity - Opacity of the polygon. Overruled by stroke-opacity css rule on polygon element.
- * @param {string|number} lineWidth - Width of the polygon. Overruled by stroke-width css rule on polygon element.
- * @param {string} color - Color of polygon. Overruled by fill css rule on polygon element.
- * @param {string|number} colorOpacity - Opacity of polygon. Overruled by fill-opacity css rule on polygon element.
- * @param {string} colorRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polygon element
+ * @param {string} stroke - Color of the polygon. Overruled by stroke css rule on polygon element.
+ * @param {string} strokeDasharray - Dash array options of the polygon. Overruled by stroke-dasharray css rule on polygon element.
+ * @param {string|number} strokeDashoffset - Dash offset options of the polygon. Overruled by stroke-dashoffset css rule on polygon element.
+ * @param {string} strokeLinejoin - Shape of corners when they are stroked. Overruled by stroke-linejoin css rule on polygon element.
+ * @param {number} strokeMiterlimit - Limit of ratio of miter length to stroke-width. Overruled by stroke-miterlimit css rule on polygon element.
+ * @param {string|number} strokeOpacity - Opacity of the polygon. Overruled by stroke-opacity css rule on polygon element.
+ * @param {string|number} strokeWidth - Width of the polygon. Overruled by stroke-width css rule on polygon element.
+ * @param {string} fill - Color of polygon. Overruled by fill css rule on polygon element.
+ * @param {string|number} fillOpacity - Opacity of polygon. Overruled by fill-opacity css rule on polygon element.
+ * @param {string} fillRule - Presentation attribute to determine the inside part of the shape. Overruled by fill-rule css rule on polygon element
  * @param {number} pathLength - Relative length in units of polygon. Use with lineDasharray to influence styling of polygon.
  *
  * @param {array<TemplateResult<2>>|nothing} innerHtmlFragments - Array of lit fragments that are child elements of circle. Default nothing.
@@ -351,16 +350,16 @@ export const createRectangle = (
 export const createPolygon = (
   {
     points,
-    lineColor,
-    lineDasharray,
-    lineDashoffset,
-    linejoin,
-    lineMiterlimit,
-    lineOpacity,
-    lineWidth,
-    color,
-    colorOpacity,
-    colorRule,
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinejoin,
+    strokeMiterlimit,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
+    fillRule,
     pathLength,
   },
   innerHtmlFragments = nothing,
@@ -368,16 +367,16 @@ export const createPolygon = (
   return svg`
     <polygon
       points=${points} 
-      stroke=${ifDefined(lineColor)}
-      stroke-dasharray=${ifDefined(lineDasharray)}
-      stroke-dashoffset=${ifDefined(lineDashoffset)}
-      stroke-linejoin=${ifDefined(linejoin)}
-      stroke-miterlimit=${ifDefined(lineMiterlimit)}
-      stroke-opacity=${ifDefined(lineOpacity)}
-      stroke-width=${ifDefined(lineWidth)}
-      fill=${ifDefined(color)}
-      fill-opacity=${ifDefined(colorOpacity)}
-      fill-rule=${ifDefined(colorRule)}
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linejoin=${ifDefined(strokeLinejoin)}
+      stroke-miterlimit=${ifDefined(strokeMiterlimit)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
+      fill-rule=${ifDefined(fillRule)}
       pathLength=${ifDefined(pathLength)}
     >
       ${innerHtmlFragments}
@@ -393,75 +392,75 @@ export const createPolygon = (
 /**
  * Function to create an SVG animate fragment
  *
- * @param {string} animateAccumulate - Add next animation onto previous one
- * @param {string} animateAdditive - Animation is an offset or delta
- * @param {string} animateAttributeName - CSS or attribute name to be animated
- * @param {string} animateAttributeType - Deprecated, namespace of target attribute
+ * @param {string} animationAccumulate - Add next animation onto previous one
+ * @param {string} animationAdditive - Animation is an offset or delta
+ * @param {string} animationAttributeName - CSS or attribute name to be animated
+ * @param {string} animationAttributeType - Deprecated, namespace of target attribute
  * @param {string} animationBegin - When the animation becomes active
  * @param {string} animationBy - Relative offset value
  * @param {string} animationCalcMode - Interpolation mode for the animation
  * @param {string} animationDuration - Duration of animation. Required
  * @param {string} animationEnd - End value for animation
  * @param {string} animationFill - Freeze or remove the last animation frame
- * @param {number} animateFrom - Starting value of attribute being animated
- * @param {string} animateKeyPoints - simple duration of the animation
- * @param {string} animateKeySplines - Set of Bézier curve control points
- * @param {string} animateKeyTimes - List of times to control animation
- * @param {string} animateMax - Maximum value of animation duration
- * @param {string} animateMin - Minimum value of animation duration
- * @param {string|number} animateRepeatCount - Number of times the animation repeats
- * @param {string} animateRepeatDuration - Total duration of animation
- * @param {string} animateRestart - Whether the animation can restart
- * @param {number} animateTo - Final value of attribute being animated
- * @param {string} animateValues - List of values to be applied to attribute during animation
+ * @param {number} animationFrom - Starting value of attribute being animated
+ * @param {string} animationKeyPoints - simple duration of the animation
+ * @param {string} animationKeySplines - Set of Bézier curve control points
+ * @param {string} animationKeyTimes - List of times to control animation
+ * @param {string} animationMax - Maximum value of animation duration
+ * @param {string} animationMin - Minimum value of animation duration
+ * @param {string|number} animationRepeatCount - Number of times the animation repeats
+ * @param {string} animationRepeatDuration - Total duration of animation
+ * @param {string} animationRestart - Whether the animation can restart
+ * @param {number} animationTo - Final value of attribute being animated
+ * @param {string} animationValues - List of values to be applied to attribute during animation
  * @returns {TemplateResult<2>}
  */
 export const createAnimate = ({
-  animateAccumulate,
-  animateAdditive,
-  animateAttributeName,
-  animateAttributeType, // deprecated
+  animationAccumulate,
+  animationAdditive,
+  animationAttributeName,
+  animationAttributeType, // deprecated
   animationBegin,
   animationBy,
   animationCalcMode,
   animationDuration,
   animationEnd,
   animationFill,
-  animateFrom,
-  animateKeyPoints,
-  animateKeyTimes,
-  animateKeySplines,
-  animateMax,
-  animateMin,
-  animateRepeatCount,
-  animateRepeatDuration,
-  animateRestart,
-  animateTo,
-  animateValues,
+  animationFrom,
+  animationKeyPoints,
+  animationKeyTimes,
+  animationKeySplines,
+  animationMax,
+  animationMin,
+  animationRepeatCount,
+  animationRepeatDuration,
+  animationRestart,
+  animationTo,
+  animationValues,
 }) => {
   return svg`
     <animate
-      accumulate=${ifDefined(animateAccumulate)}
-      additive=${ifDefined(animateAdditive)}
-      attributeName=${ifDefined(animateAttributeName)}
-      attributeType=${ifDefined(animateAttributeType)}
+      accumulate=${ifDefined(animationAccumulate)}
+      additive=${ifDefined(animationAdditive)}
+      attributeName=${ifDefined(animationAttributeName)}
+      attributeType=${ifDefined(animationAttributeType)}
       begin=${ifDefined(animationBegin)}
       by=${ifDefined(animationBy)}
       calcMode=${ifDefined(animationCalcMode)}
       dur=${ifDefined(animationDuration)}
       end=${ifDefined(animationEnd)}
       fill=${ifDefined(animationFill)}
-      from=${ifDefined(animateFrom)}
-      keyPoints=${ifDefined(animateKeyPoints)}
-      keySplines=${ifDefined(animateKeySplines)}
-      keyTimes=${ifDefined(animateKeyTimes)}
-      max=${ifDefined(animateMax)}
-      min=${ifDefined(animateMin)}
-      repeatCount=${ifDefined(animateRepeatCount)}
-      repeatDur=${ifDefined(animateRepeatDuration)}
-      restart=${ifDefined(animateRestart)}
-      to=${ifDefined(animateTo)}
-      values=${ifDefined(animateValues)}      
+      from=${ifDefined(animationFrom)}
+      keyPoints=${ifDefined(animationKeyPoints)}
+      keySplines=${ifDefined(animationKeySplines)}
+      keyTimes=${ifDefined(animationKeyTimes)}
+      max=${ifDefined(animationMax)}
+      min=${ifDefined(animationMin)}
+      repeatCount=${ifDefined(animationRepeatCount)}
+      repeatDur=${ifDefined(animationRepeatDuration)}
+      restart=${ifDefined(animationRestart)}
+      to=${ifDefined(animationTo)}
+      values=${ifDefined(animationValues)}      
     />
   `;
 };
@@ -469,78 +468,78 @@ export const createAnimate = ({
 /**
  * Function to create an SVG animateMotion fragment
  *
- * @param {string} animateAccumulate - Add next animation onto previous one
- * @param {string} animateAdditive - Animation is an offset or delta
+ * @param {string} animationAccumulate - Add next animation onto previous one
+ * @param {string} animationAdditive - Animation is an offset or delta
  * @param {string} animationBegin - When the animation becomes active
  * @param {string} animationBy - Relative offset value
  * @param {string} animationCalcMode - Interpolation mode for the animation
  * @param {string} animationDuration - Duration of animation. Required
  * @param {string} animationEnd - End value for animation
  * @param {string} animationFill - Freeze or remove the last animation frame
- * @param {number} animateFrom - Starting value of attribute being animated
- * @param {string} animateKeyPoints - simple duration of the animation
- * @param {string} animateKeySplines - Set of Bézier curve control points
- * @param {string} animateKeyTimes - List of times to control animation
- * @param {string} animateMax - Maximum value of animation duration
- * @param {string} animateMin - Minimum value of animation duration
- * @param {string} animateOrigin - Origin of motion for an animation. No effect on SVG.
- * @param {string} animatePath - Motion path, same as d property on <path>
- * @param {string|number} animateRepeatCount - Number of times the animation repeats
- * @param {string} animateRepeatDuration - Total duration of animation
- * @param {string} animateRestart - Whether the animation can restart
- * @param {string|number} animateRotate - How the animated element rotates as it moves
- * @param {number} animateTo - Final value of attribute being animated
- * @param {string} animateValues - List of values to be applied to attribute during animation
+ * @param {number} animationFrom - Starting value of attribute being animated
+ * @param {string} animationKeyPoints - simple duration of the animation
+ * @param {string} animationKeySplines - Set of Bézier curve control points
+ * @param {string} animationKeyTimes - List of times to control animation
+ * @param {string} animationMax - Maximum value of animation duration
+ * @param {string} animationMin - Minimum value of animation duration
+ * @param {string} animationOrigin - Origin of motion for an animation. No effect on SVG.
+ * @param {string} animationPath - Motion path, same as d property on <path>
+ * @param {string|number} animationRepeatCount - Number of times the animation repeats
+ * @param {string} animationRepeatDuration - Total duration of animation
+ * @param {string} animationRestart - Whether the animation can restart
+ * @param {string|number} animationRotate - How the animated element rotates as it moves
+ * @param {number} animationTo - Final value of attribute being animated
+ * @param {string} animationValues - List of values to be applied to attribute during animation
  * @returns {TemplateResult<2>}
  */
 export const createAnimateMotion = ({
-  animateAccumulate,
-  animateAdditive,
+  animationAccumulate,
+  animationAdditive,
   animationBegin,
   animationBy,
   animationCalcMode,
   animationDuration,
   animationEnd,
   animationFill,
-  animateFrom,
-  animateKeyPoints,
-  animateKeyTimes,
-  animateKeySplines,
-  animateMax,
-  animateMin,
-  animateOrigin,
-  animatePath,
-  animateRepeatCount,
-  animateRepeatDuration,
-  animateRestart,
-  animateRotate,
-  animateTo,
-  animateValues,
+  animationFrom,
+  animationKeyPoints,
+  animationKeyTimes,
+  animationKeySplines,
+  animationMax,
+  animationMin,
+  animationOrigin,
+  animationPath,
+  animationRepeatCount,
+  animationRepeatDuration,
+  animationRestart,
+  animationRotate,
+  animationTo,
+  animationValues,
 }) => {
   return svg`
     <animateMotion
-      accumulate=${ifDefined(animateAccumulate)}
-      additive=${ifDefined(animateAdditive)}
+      accumulate=${ifDefined(animationAccumulate)}
+      additive=${ifDefined(animationAdditive)}
       begin=${ifDefined(animationBegin)}
       by=${ifDefined(animationBy)}
       calcMode=${ifDefined(animationCalcMode)}
       dur=${ifDefined(animationDuration)}
       end=${ifDefined(animationEnd)}
       fill=${ifDefined(animationFill)}
-      from=${ifDefined(animateFrom)}
-      keyPoints=${ifDefined(animateKeyPoints)}
-      keySplines=${ifDefined(animateKeySplines)}
-      keyTimes=${ifDefined(animateKeyTimes)}
-      max=${ifDefined(animateMax)}
-      min=${ifDefined(animateMin)}
-      origin=${ifDefined(animateOrigin)}
-      path=${ifDefined(animatePath)}
-      repeatCount=${ifDefined(animateRepeatCount)}
-      repeatDur=${ifDefined(animateRepeatDuration)}
-      restart=${ifDefined(animateRestart)}
-      rotate=${ifDefined(animateRotate)}
-      to=${ifDefined(animateTo)}
-      values=${ifDefined(animateValues)}
+      from=${ifDefined(animationFrom)}
+      keyPoints=${ifDefined(animationKeyPoints)}
+      keySplines=${ifDefined(animationKeySplines)}
+      keyTimes=${ifDefined(animationKeyTimes)}
+      max=${ifDefined(animationMax)}
+      min=${ifDefined(animationMin)}
+      origin=${ifDefined(animationOrigin)}
+      path=${ifDefined(animationPath)}
+      repeatCount=${ifDefined(animationRepeatCount)}
+      repeatDur=${ifDefined(animationRepeatDuration)}
+      restart=${ifDefined(animationRestart)}
+      rotate=${ifDefined(animationRotate)}
+      to=${ifDefined(animationTo)}
+      values=${ifDefined(animationValues)}
     />
   `;
 };
@@ -548,78 +547,78 @@ export const createAnimateMotion = ({
 /**
  * Function to create an SVG animateTransform fragment
  *
- * @param {string} animateAccumulate - Add next animation onto previous one
- * @param {string} animateAdditive - Animation is an offset or delta
- * @param {string} animateAttributeName - CSS or attribute name to be animated
- * @param {string} animateAttributeType - Deprecated, namespace of target attribute
+ * @param {string} animationAccumulate - Add next animation onto previous one
+ * @param {string} animationAdditive - Animation is an offset or delta
+ * @param {string} animationAttributeName - CSS or attribute name to be animated
+ * @param {string} animationAttributeType - Deprecated, namespace of target attribute
  * @param {string} animationBegin - When the animation becomes active
  * @param {string} animationBy - Relative offset value
  * @param {string} animationCalcMode - Interpolation mode for the animation
  * @param {string} animationDuration - Duration of animation. Required
  * @param {string} animationEnd - End value for animation
  * @param {string} animationFill - Freeze or remove the last animation frame
- * @param {number} animateFrom - Starting value of attribute being animated
- * @param {string} animateKeyPoints - simple duration of the animation
- * @param {string} animateKeySplines - Set of Bézier curve control points
- * @param {string} animateKeyTimes - List of times to control animation
- * @param {string} animateMax - Maximum value of animation duration
- * @param {string} animateMin - Minimum value of animation duration
- * @param {string|number} animateRepeatCount - Number of times the animation repeats
- * @param {string} animateRepeatDuration - Total duration of animation
- * @param {string} animateRestart - Whether the animation can restart
- * @param {number} animateTo - Final value of attribute being animated
- * @param {string} animateType - type of transformation
- * @param {string} animateValues - List of values to be applied to attribute during animation
+ * @param {number} animationFrom - Starting value of attribute being animated
+ * @param {string} animationKeyPoints - simple duration of the animation
+ * @param {string} animationKeySplines - Set of Bézier curve control points
+ * @param {string} animationKeyTimes - List of times to control animation
+ * @param {string} animationMax - Maximum value of animation duration
+ * @param {string} animationMin - Minimum value of animation duration
+ * @param {string|number} animationRepeatCount - Number of times the animation repeats
+ * @param {string} animationRepeatDuration - Total duration of animation
+ * @param {string} animationRestart - Whether the animation can restart
+ * @param {number} animationTo - Final value of attribute being animated
+ * @param {string} animationType - type of transformation
+ * @param {string} animationValues - List of values to be applied to attribute during animation
  * @returns {TemplateResult<2>}
  */
 export const createAnimateTransform = ({
-  animateAccumulate,
-  animateAdditive,
-  animateAttributeName,
-  animateAttributeType, // deprecated
+  animationAccumulate,
+  animationAdditive,
+  animationAttributeName,
+  animationAttributeType, // deprecated
   animationBegin,
   animationBy,
   animationCalcMode,
   animationDuration,
   animationEnd,
   animationFill,
-  animateFrom,
-  animateKeyPoints,
-  animateKeyTimes,
-  animateKeySplines,
-  animateMax,
-  animateMin,
-  animateRepeatCount,
-  animateRepeatDuration,
-  animateRestart,
-  animateTo,
-  animateType,
-  animateValues,
+  animationFrom,
+  animationKeyPoints,
+  animationKeyTimes,
+  animationKeySplines,
+  animationMax,
+  animationMin,
+  animationRepeatCount,
+  animationRepeatDuration,
+  animationRestart,
+  animationTo,
+  animationType,
+  animationValues,
 }) => {
   return svg`
     <animateTransform
-      accumulate=${ifDefined(animateAccumulate)}
-      additive=${ifDefined(animateAdditive)}
-      attributeName=${ifDefined(animateAttributeName)}
-      attributeType=${ifDefined(animateAttributeType)}
+      accumulate=${ifDefined(animationAccumulate)}
+      additive=${ifDefined(animationAdditive)}
+      attributeName=${ifDefined(animationAttributeName)}
+      attributeType=${ifDefined(animationAttributeType)}
       begin=${ifDefined(animationBegin)}
       by=${ifDefined(animationBy)}
       calcMode=${ifDefined(animationCalcMode)}
       dur=${ifDefined(animationDuration)}
       end=${ifDefined(animationEnd)}
       fill=${ifDefined(animationFill)}
-      from=${ifDefined(animateFrom)}
-      keyPoints=${ifDefined(animateKeyPoints)}
-      keySplines=${ifDefined(animateKeySplines)}
-      keyTimes=${ifDefined(animateKeyTimes)}
-      max=${ifDefined(animateMax)}
-      min=${ifDefined(animateMin)}
-      repeatCount=${ifDefined(animateRepeatCount)}
-      repeatDur=${ifDefined(animateRepeatDuration)}
-      restart=${ifDefined(animateRestart)}
-      to=${ifDefined(animateTo)}
-      type=${ifDefined(animateType)}
-      values=${ifDefined(animateValues)}
+      from=${ifDefined(animationFrom)}
+      keyPoints=${ifDefined(animationKeyPoints)}
+      keySplines=${ifDefined(animationKeySplines)}
+      keyTimes=${ifDefined(animationKeyTimes)}
+      max=${ifDefined(animationMax)}
+      min=${ifDefined(animationMin)}
+      repeatCount=${ifDefined(animationRepeatCount)}
+      repeatDur=${ifDefined(animationRepeatDuration)}
+      restart=${ifDefined(animationRestart)}
+      to=${ifDefined(animationTo)}
+      type=${ifDefined(animationType)}
+      values=${ifDefined(animationValues)}
     />
   `;
 };

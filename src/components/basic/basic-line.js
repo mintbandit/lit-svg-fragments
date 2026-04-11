@@ -8,16 +8,16 @@ import { createLine } from '../../core/core-functions.js';
  * @tag basic-line
  * @property {number} svgWidth - width of the SVG canvas
  * @property {number} svgHeight - height of the SVG canvas
- * @property {number} xStart - starting X coordinate of the line. Equivalent of left css relative to top left of canvas
- * @property {number} xEnd - ending X coordinate of the Line. Equivalent of left css relative to top left of canvas
- * @property {number} yStart - starting Y coordinate of the line. Equivalent of top css relative to top left of canvas
- * @property {number} yEnd - ending T coordinate of the Line. Equivalent of top css relative to top left of canvas
- * @property {string} lineColor - Color of the Line. Overruled by stroke css rule on Line element.
- * @property {string} lineDasharray - Dash array options of the Line. Overruled by stroke-dasharray css rule on Line element.
- * @property {string} lineDashoffset - Dash offset options of the Line. Overruled by stroke-dashoffset css rule on Line element.
- * @property {string} lineCap - Shape of the end of the line. Overruled by stroke-linecap css rule on Line element.
- * @property {string} lineOpacity - Opacity of the Line. Overruled by stroke-opacity css rule on ellipse element.
- * @property {string} lineWidth - Width of the Line. Overruled by stroke-width css rule on Line element.
+ * @property {number} x1 - starting X coordinate of the line. Equivalent of left css relative to top left of canvas
+ * @property {number} x2 - ending X coordinate of the Line. Equivalent of left css relative to top left of canvas
+ * @property {number} y1 - starting Y coordinate of the line. Equivalent of top css relative to top left of canvas
+ * @property {number} y2 - ending T coordinate of the Line. Equivalent of top css relative to top left of canvas
+ * @property {string} stroke - Color of the Line. Overruled by stroke css rule on Line element.
+ * @property {string} strokeDasharray - Dash array options of the Line. Overruled by stroke-dasharray css rule on Line element.
+ * @property {string} strokeDashoffset - Dash offset options of the Line. Overruled by stroke-dashoffset css rule on Line element.
+ * @property {string} strokeLinecap - Shape of the end of the line. Overruled by stroke-linecap css rule on Line element.
+ * @property {string} strokeOpacity - Opacity of the Line. Overruled by stroke-opacity css rule on ellipse element.
+ * @property {string} strokeWidth - Width of the Line. Overruled by stroke-width css rule on Line element.
  * @property {number} pathLength - Relative length in units of the Line. Use with lineDasharray to influence styling of circumference.
  */
 export default class BasicLine extends LitElement {
@@ -38,30 +38,33 @@ export default class BasicLine extends LitElement {
 
     // Dimensions
     // TODO all 4 can be % values -> must be string to support in demo
-    xStart: { attribute: 'x-start', type: Number, reflect: true },
-    xEnd: { attribute: 'x-end', type: Number, reflect: true },
-    yStart: { attribute: 'y-start', type: Number, reflect: true },
-    yEnd: { attribute: 'y-end', type: Number, reflect: true },
+    x1: { type: Number, reflect: true },
+    x2: { type: Number, reflect: true },
+    y1: { type: Number, reflect: true },
+    y2: { type: Number, reflect: true },
 
     // Style - css will overrule attributes
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke
-    lineColor: { attribute: 'line-color', type: String, reflect: true }, // stroke
-    lineDasharray: { attribute: 'line-dasharray', type: String, reflect: true }, // stroke-dasharray
-    lineDashoffset: {
-      // stroke-dashoffset
-      attribute: 'line-dashoffset',
+    stroke: { type: String, reflect: true },
+    strokeDasharray: {
+      attribute: 'stroke-dasharray',
       type: String,
       reflect: true,
     },
-    lineCap: { attribute: 'linecap', type: String, reflect: true }, // stroke-linecap
-    // borderLinejoin: { attribute: 'border-linejoin', type: String, reflect: true }, // stroke-linejoin
-    // borderMiterlimit: { attribute: 'border-miterlimit', type: String, reflect: true }, // stroke-miterlimit
-    lineOpacity: { attribute: 'line-opacity', type: String, reflect: true }, // stroke-opacity
-    lineWidth: { attribute: 'line-width', type: String, reflect: true }, // stroke-width
+    strokeDashoffset: {
+      attribute: 'stroke-dashoffset',
+      type: String,
+      reflect: true,
+    },
+    strokeLinecap: { attribute: 'stroke-linecap', type: String, reflect: true },
+    // strokeLinejoin: { attribute: 'stroke-linejoin', type: String, reflect: true },
+    // strokeMiterlimit: { attribute: 'stroke-miterlimit', type: String, reflect: true },
+    strokeOpacity: { attribute: 'stroke-opacity', type: String, reflect: true },
+    strokeWidth: { attribute: 'stroke-width', type: String, reflect: true },
 
-    // color: { type: String, reflect: true }, // fill
-    // colorOpacity: { attribute: 'color-opacity', type: String, reflect: true }, // fill-opacity
-    // colorRule: { attribute: 'color-rule', type: String, reflect: true }, // fill-rule
+    // fill: { type: String, reflect: true },
+    // fillOpacity: { attribute: 'fill-opacity', type: String, reflect: true },
+    // fillRule: { attribute: 'fill-rule', type: String, reflect: true },
 
     // Use with dasharray
     pathLength: { attribute: 'path-length', type: Number, reflect: true },

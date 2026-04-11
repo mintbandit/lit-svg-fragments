@@ -24,21 +24,21 @@ const defaultTemplate = args => html`
   <basic-rectangle
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
-    x-start=${args.xStart}
-    y-start=${args.yStart}
+    x=${args.x}
+    y=${args.y}
     width=${args.width}
     height=${args.height}
-    radius-x=${args.radiusX}
-    radius-y=${args.radiusY}
-    border-color=${ifDefined(choice(args.borderColor))}
-    border-dasharray=${ifDefined(args.borderDasharray)}
-    border-dashoffset=${ifDefined(args.borderDashoffset)}
-    border-linejoin=${ifDefined(choice(args.borderLinejoin))}
-    border-miterlimit=${ifDefined(args.borderMiterlimit)}
-    border-opacity=${ifDefined(args.borderOpacity)}
-    border-width=${ifDefined(args.borderWidth)}
-    color=${ifDefined(choice(args.color))}
-    color-opacity=${ifDefined(args.colorOpacity)}
+    rx=${args.rx}
+    ry=${args.ry}
+    stroke=${ifDefined(choice(args.stroke))}
+    stroke-dasharray=${ifDefined(args.strokeDasharray)}
+    stroke-dashoffset=${ifDefined(args.strokeDashoffset)}
+    stroke-linejoin=${ifDefined(choice(args.strokeLinejoin))}
+    stroke-miterlimit=${ifDefined(args.strokeMiterlimit)}
+    stroke-opacity=${ifDefined(args.strokeOpacity)}
+    stroke-width=${ifDefined(args.strokeWidth)}
+    fill=${ifDefined(choice(args.fill))}
+    fill-opacity=${ifDefined(args.fillOpacity)}
     path-length=${ifDefined(args.pathLength)}
   >
   </basic-rectangle>
@@ -54,33 +54,28 @@ export default {
     },
   },
   argTypes: {
-    borderColor: {
+    stroke: {
       control: 'select',
       options: colors,
     },
-    borderLinejoin: {
+    strokeLinejoin: {
       control: 'select',
       options: strokeLinejoin,
     },
-    color: {
+    fill: {
       control: 'select',
       options: colors,
     },
     ...hideControls([
       'svg-width',
       'svg-height',
-      'x-start',
-      'y-start',
-      'radius-x',
-      'radius-y',
-      'border-color',
-      'border-dasharray',
-      'border-dashoffset',
-      'border-linejoin',
-      'border-miterlimit',
-      'border-opacity',
-      'border-width',
-      'color-opacity',
+      'stroke-dasharray',
+      'stroke-dashoffset',
+      'stroke-linejoin',
+      'stroke-miterlimit',
+      'stroke-opacity',
+      'stroke-width',
+      'fill-opacity',
       'path-length',
     ]),
   },
@@ -90,11 +85,14 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    xStart: 50,
-    yStart: 50,
+    x: 50,
+    y: 50,
     width: 20,
     height: 40,
     pathLength: 10,
-    borderWidth: '2',
+    strokeWidth: '2',
+    stroke: 'not set',
+    fill: 'not set',
+    strokeLinejoin: 'not set',
   },
 };
