@@ -69,13 +69,9 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    r: 10,
+    r: 25,
     cx: 50,
     cy: 50,
-    pathLength: 10,
-    strokeWidth: '2',
-    fillOpacity: '1', // Need to restrict to 0 -> 1
-    strokeOpacity: '1', // Need to restrict to 0 -> 1
     stroke: 'not set',
     fill: 'not set',
   },
