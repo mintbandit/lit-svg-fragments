@@ -92,7 +92,6 @@ export const Default = {
     points: '50,0 21,90 98,35 2,35 79,90',
     stroke: 'black',
     fill: 'transparent',
-    pathLength: 10,
     fillRule: 'not set',
     strokeLinecap: 'not set',
   },

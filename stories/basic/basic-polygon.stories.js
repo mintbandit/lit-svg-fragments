@@ -84,9 +84,8 @@ export const Default = {
     svgWidth: 100,
     svgHeight: 100,
     points: '50,0 21,90 98,35 2,35 79,90',
-    stroke: 'black',
-    fill: 'transparent',
-    pathLength: 10,
+    stroke: 'not set',
+    fill: 'not set',
     fillRule: 'not set',
   },
 };

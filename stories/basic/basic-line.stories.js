@@ -74,13 +74,11 @@ export const Default = {
   args: {
     svgWidth: 100,
     svgHeight: 100,
-    x1: 20,
-    x2: 50,
+    x1: 10,
+    x2: 90,
     y1: 10,
-    y2: 50,
+    y2: 90,
     stroke: 'black',
-    strokeWidth: '2',
-    pathLength: 10,
     strokeLinecap: 'not set',
   },
 };
