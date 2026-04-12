@@ -1,6 +1,19 @@
 import { nothing, svg } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
+// TODO missing attributes
+//  - clip-path all
+//  - clip-rule all (special??)
+//  - color-interpolation all
+//  - marker-end all (advanced)
+//  - marker-mid all (advanced)
+//  - marker-start all (advanced)
+//  - paint-order all (strange)
+//  - shape-rendering all
+//  - transform all
+//  - vector-effect all
+//  - visibility all
+
 /**
  * Function to create an SVG circle fragment
  *
@@ -36,7 +49,7 @@ export const createCircle = (
   innerHtmlFragments = nothing,
 ) => {
   return svg`
-    <circle 
+    <circle
       cx=${cx}
       cy=${cy}
       r=${r}

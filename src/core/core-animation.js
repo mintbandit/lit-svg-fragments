@@ -8,6 +8,9 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 // TODO align api with native naming.
 //  Problem with 'fill' on exising demo components. Not the same.
 
+// TODO missing attributes
+//  - color-interpolation - animate only
+
 /**
  * Function to create an SVG animate fragment
  *

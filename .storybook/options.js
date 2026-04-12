@@ -131,3 +131,65 @@ export const animationType = [
   'skewX',
   'skewY',
 ];
+
+/**
+ * Available options for clip-rule attribute
+ *
+ * @type {string[]}
+ */
+export const clipRule = ['not set', 'nonzero', 'evenodd', 'inherit'];
+
+/**
+ * Available options for clipPathUnits attribute
+ *
+ * @type {string[]}
+ */
+export const clipPathUnits = ['not set', 'userSpaceOnUse', 'objectBoundingBox'];
+
+/**
+ * Available options for color-interpolation and color-interpolation-filters attributes
+ *
+ * @type {string[]}
+ */
+export const colorInterpolation = ['not set', 'auto', 'sRGB', 'linearRBG'];
+
+/**
+ * Available options for vector-effect attribute
+ *
+ * @type {string[]}
+ */
+export const vectorEffect = [
+  'not set',
+  'none',
+  'non-scaling-stroke',
+  'non-scaling-size',
+  'non-rotation',
+  'fixed-position',
+];
+
+/**
+ * Available options for shape-rendering attribute
+ *
+ * @type {string[]}
+ */
+export const shapeRendering = [
+  'not set',
+  'auto',
+  'optimizedSpeed',
+  'crispEdges',
+  'geometricPrecision',
+];
+
+/**
+ * Available options for markerUnits attribute
+ *
+ * @type {string[]}
+ */
+export const markerUnits = ['not set', 'userSpaceOnUse', 'strokeWidth'];
+
+/**
+ * Available options for lengthAdjust attribute
+ *
+ * @type {string[]}
+ */
+export const lengthAdjust = ['not set', 'spacing', 'spacingAndGlyphs'];

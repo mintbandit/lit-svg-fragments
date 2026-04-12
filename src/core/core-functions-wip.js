@@ -38,3 +38,417 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 // Attributes evaluated
 //  - style -> All elements, if using this what is the point of the other attributes?
+
+// TODO Remaining SVG elements
+//  - clipPath
+//  - feBlend
+//  - fe*** x25 -> Advanced filters
+//  - filter
+//  - foreignObject
+//  - linearGradient
+//  - mask
+//  - mpath
+//  - pattern
+//  - radialGradient
+//  - stop
+//  - style -> CSP conflict?
+//  - symbol
+//  - view
+
+// TODO turn an shape into a link
+//  Supports same attributes
+//  Must wrap another shape
+export const createAnchor = ({}, innerHtmlFragments = nothing) => {
+  return svg`
+    <a 
+      download=""
+      href=""
+      hreflang=""
+      interestfor="experimental"
+      ping="experimental"
+      referrerpolicy=""
+      rel=""
+      target=""
+      type=""
+      xlink:href="deprecated"
+    >
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </a>
+  `;
+};
+
+// TODO graphical object that can be used later
+//  Consider it a reusable svg template
+export const createDefs = ({}, innerHtmlFragments = nothing) => {
+  // TODO supports global attributes
+  return svg`
+    <defs>
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </defs>
+  `;
+};
+
+// TODO each child will overlap the previous
+//  think child index is equal to z-index
+//  child 2 will overlap child 1
+//  child 3 will overlap child 2 and so on
+//  Unless fills are transparent you won't be able to see anything behind
+export const createGroup = ({}, innerHtmlFragments = nothing) => {
+  // Apply common style to group of elements
+  // TODO supports global attributes
+  return svg`
+    <g
+      fill="white"
+      stroke="black"
+      stroke-width="5"
+    >
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </g>
+  `;
+};
+
+// TODO this one can be completed in full
+export const createImage = ({}, innerHtmlFragments = nothing) => {
+  return svg`
+    <image 
+      x=""
+      y=""
+      width=""
+      height=""
+      href=""
+      preserveAspectRatio=""
+      crossorigin=""
+      decoding=""
+      fetchpriority=""
+      xlink:href=""
+    >
+      ${innerHtmlFragments}
+    </image>
+  `;
+};
+
+// TODO for creating arrowheads
+//  important for charts
+export const createMarker = ({}, innerHtmlFragments = nothing) => {
+  return svg`
+    <marker
+      markerHeight=""
+      markerUnits=""
+      markerWidth=""
+      orient=""
+      preserveAspectRatio=""
+      refX=""
+      refY=""
+      viewBox=""
+    >
+      ${innerHtmlFragments}
+    </marker>
+  `;
+};
+
+export const createPath = (
+  {
+    d,
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinecap,
+    strokeLinejoin,
+    strokeMiterlimit,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
+    fillRule,
+    pathLength,
+  },
+  innerHtmlFragments = nothing,
+) => {
+  // https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/d
+
+  // 6 types of commands, 20 available
+  // Upper case -> absolute coordinates
+  // lower case -> relative coordinates
+  // x, y in each command is the end point (start point for next command)
+
+  // M (moveTo) - starting position
+  // A Elliptical arc curve - ( rx, ry arc-options x,y )
+  // Q Quadratic Bezier curve - (x1, y1, x, y) - x1/y1 is control point, line bends towards it
+  //   - T - (x, y) smooth curve to point, based on previous curve command
+  // L LineTo - (x, y) straight line to coordinate
+  //   - H - (x) horizontal line
+  //   - V - (y) vertical line
+  // C - Cubic Bezier curve - (x1, y1, x2, y2, x, y) x1/y1 is control point at beginning, x2/y2 is control point at end
+  //   - S (x2, y2, x, y) smooth curve to point, first control point based on previous curve
+  // Z Close Path - Connect first last point
+
+  // Very similar to points array for polyline/polygon
+  //  main difference is micromanaging how the points are connected
+  //  M at the front of list of points will generate the exact same output
+  //  Can create complex patterns without using multiple line elements
+
+  d = `
+      M 10,30
+      A 20,20 0,0,1 50,30
+      A 20,20 0,0,1 90,30
+      Q 90,60 50,90
+      Q 10,60 10,30 z
+    `;
+
+  stroke = 'blue';
+  fill = 'red';
+
+  return svg`
+    <path
+      d=${d}
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linecap=${ifDefined(strokeLinecap)}
+      stroke-linejoin=${ifDefined(strokeLinejoin)}
+      stroke-miterlimit=${ifDefined(strokeMiterlimit)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
+      fill-rule=${ifDefined(fillRule)}
+      pathLength=${ifDefined(pathLength)}       
+    >
+      ${innerHtmlFragments}
+    </path>
+  `;
+};
+
+// TODO will be a child element of another shape element
+//  Likely functions above will call this.
+export const createSet = ({}, innerHtmlFragments = nothing) => {
+  return svg`
+    <set
+      attributeName=""
+      attributeType=""
+      begin=""
+      dur=""
+      end=""
+      fill=""
+      keyPoints=""
+      max=""
+      min=""
+      repeatCount=""
+      repeatDur=""
+      restart=""
+      to=""
+    >
+      ${innerHtmlFragments}
+    </set>
+  `;
+};
+
+// TODO Useful for i18n
+//  child elements will render subject to system configurations
+export const createSwitch = ({}, innerHtmlFragments = nothing) => {
+  return svg`
+    <switch
+      requiredExtensions=""
+      systemLanguage=""
+    >
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </switch>>
+  `;
+};
+
+// TODO Yes, can be nested in another svg
+export const createSVG = ({}, innerHtmlFragments = nothing) => {
+  return svg`
+    <svg
+      baseProfile="deprecated"
+      clip="deprecated"
+      clip-path=""
+      height=""
+      preserveAspectRatio=""
+      version=""
+      viewBox=""
+      width=""
+      x=""
+      y=""
+    >
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </svg>
+  `;
+};
+
+// TODO Yes, this is allowed
+//  Unlikely to ever be supported due to security concerns.
+//  How would you even inject the logic?
+//   - pass string and use eval?
+//  External user would have to create this and provide the fragment
+//  href is only option to load an external script
+//  Would unsafeSVG directive be required here?
+export const createScript = () => {
+  return svg`
+    <script
+      crossorigin=""
+      fetchpriority="experimental"
+      href=""
+      type=""
+      xlink:href=""
+    >
+      // insert script to execute
+    </script>
+  `;
+};
+
+// TODO requires text, textPath or tSpan as inner html
+export const createText = (
+  {
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinecap,
+    strokeLinejoin,
+    strokeMiterlimit,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
+    fillRule,
+  },
+  innerHtmlFragments = nothing,
+) => {
+  return svg`
+    <text
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linecap=${ifDefined(strokeLinecap)}
+      stroke-linejoin=${ifDefined(strokeLinejoin)}
+      stroke-miterlimit=${ifDefined(strokeMiterlimit)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
+      fill-rule=${ifDefined(fillRule)}
+      x=""
+      y=""
+      dx=""
+      dy=""
+      rotate=""
+      lengthAdjust=""
+      textLength=""
+    >
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </text>
+  `;
+};
+
+export const createTextPath = (
+  {
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinecap,
+    strokeLinejoin,
+    strokeMiterlimit,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
+    fillRule,
+  },
+  innerHtmlFragments = nothing,
+) => {
+  return svg`
+    <textPath
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linecap=${ifDefined(strokeLinecap)}
+      stroke-linejoin=${ifDefined(strokeLinejoin)}
+      stroke-miterlimit=${ifDefined(strokeMiterlimit)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
+      fill-rule=${ifDefined(fillRule)}
+      href=""
+      lengthAdjust=""
+      method=""
+      path=""
+      side=""
+      spacing=""
+      startOffset=""
+      textLength=""
+    >
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </textPath>
+  `;
+};
+
+// TODO subtext within a <text>
+export const createTspan = (
+  {
+    stroke,
+    strokeDasharray,
+    strokeDashoffset,
+    strokeLinecap,
+    strokeLinejoin,
+    strokeMiterlimit,
+    strokeOpacity,
+    strokeWidth,
+    fill,
+    fillOpacity,
+    fillRule,
+  },
+  innerHtmlFragments = nothing,
+) => {
+  return svg`
+    <tspan
+      stroke=${ifDefined(stroke)}
+      stroke-dasharray=${ifDefined(strokeDasharray)}
+      stroke-dashoffset=${ifDefined(strokeDashoffset)}
+      stroke-linecap=${ifDefined(strokeLinecap)}
+      stroke-linejoin=${ifDefined(strokeLinejoin)}
+      stroke-miterlimit=${ifDefined(strokeMiterlimit)}
+      stroke-opacity=${ifDefined(strokeOpacity)}
+      stroke-width=${ifDefined(strokeWidth)}
+      fill=${ifDefined(fill)}
+      fill-opacity=${ifDefined(fillOpacity)}
+      fill-rule=${ifDefined(fillRule)}
+      x=""
+      y=""
+      dx=""
+      dy=""
+      rotate=""
+      lengthAdjust=""
+      textLength=""
+    >
+      <!-- requires child elements --->
+      ${innerHtmlFragments}
+    </tspan>
+  `;
+};
+
+// TODO use defs created
+//  href -> def id
+//  MDN docs mention css inheritance, maybe impacted by shadowdom
+//  hrefs may be in external files, can be impacted by CORS
+export const createUse = ({}, innerHtmlFragments = nothing) => {
+  return svg`
+    <use 
+      href=""
+      xlink:href=""
+      x=""
+      y=""
+      width=""
+      height=""
+    >
+      ${innerHtmlFragments}
+    </use>
+  `;
+};
