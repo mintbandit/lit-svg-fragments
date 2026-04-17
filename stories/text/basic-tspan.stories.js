@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import BasicText from '../../src/components/text/basic-text.js';
+import BasicTspan from '../../src/components/text/basic-tspan.js';
 import {
   colors,
   choice,
@@ -9,17 +9,16 @@ import {
   strokeLinecap,
   fillRule,
   textAnchor,
-  textRendering,
   lengthAdjust,
   fontFamily,
   fontWeight,
   fontStyle,
 } from '../../.storybook/options.js';
 import { page } from '../../.storybook/page.jsx';
-import markdown from './basic-text.md?raw';
+import markdown from './basic-tspan.md?raw';
 
-if (!customElements.get('basic-text')) {
-  customElements.define('basic-text', BasicText);
+if (!customElements.get('basic-tspan')) {
+  customElements.define('basic-tspan', BasicTspan);
 }
 
 /**
@@ -29,14 +28,14 @@ if (!customElements.get('basic-text')) {
  * @returns
  */
 const defaultTemplate = args => html`
-  <basic-text
+  <basic-tspan
     svg-width=${args.svgWidth}
     svg-height=${args.svgHeight}
     display-text=${args.displayText}
     dx=${ifDefined(args.dx)}
     dy=${ifDefined(args.dy)}
-    x=${args.x}
-    y=${args.y}
+    x=${ifDefined(args.x)}
+    y=${ifDefined(args.y)}
     stroke=${ifDefined(choice(args.stroke))}
     stroke-dasharray=${ifDefined(args.strokeDasharray)}
     stroke-dashoffset=${ifDefined(args.strokeDashoffset)}
@@ -63,12 +62,12 @@ const defaultTemplate = args => html`
     font-weight=${ifDefined(choice(args.fontWeight))}
     font-width=${ifDefined(args.fontWidth)}
   >
-  </basic-text>
+  </basic-tspan>
 `;
 
 export default {
-  title: 'Basic Text/Text',
-  component: 'basic-text',
+  title: 'Basic Text/Tspan',
+  component: 'basic-tspan',
   render: args => defaultTemplate(args),
   parameters: {
     docs: {
@@ -116,10 +115,6 @@ export default {
       control: 'select',
       options: textAnchor,
     },
-    textRendering: {
-      control: 'select',
-      options: textRendering,
-    },
     ...hideControls([
       'svg-width',
       'svg-height',
@@ -137,7 +132,6 @@ export default {
       'text-anchor',
       'text-decoration',
       'text-length',
-      'text-rendering',
       'font-family',
       'font-size',
       'font-size-adjust',
@@ -152,11 +146,9 @@ export default {
 
 export const Default = {
   args: {
-    svgWidth: 120,
+    svgWidth: 475,
     svgHeight: 60,
-    displayText: 'Hello World',
-    x: 15,
-    y: 35,
+    displayText: '"I am a tspan."',
     fill: 'not set',
     fillRule: 'not set',
     fontFamily: 'not set',
@@ -166,7 +158,6 @@ export const Default = {
     stroke: 'not set',
     strokeLinecap: 'not set',
     strokeLinejoin: 'not set',
-    textRendering: 'not set',
     textAnchor: 'not set',
   },
 };

@@ -100,8 +100,8 @@ export const createText = (
       text-anchor=${ifDefined(textAnchor)} 
       text-decoration=${ifDefined(textDecoration)}     
       text-rendering=${ifDefined(textRendering)}
-      x=${x}
-      y=${y}
+      x=${ifDefined(x)}
+      y=${ifDefined(y)}
     >
       ${innerHtmlFragments}
     </text>
@@ -312,8 +312,8 @@ export const createTspan = (
       textLength=${ifDefined(textLength)}
       text-anchor=${ifDefined(textAnchor)}
       text-decoration=${ifDefined(textDecoration)}
-      x=${x}
-      y=${y}
+      x=${ifDefined(x)}
+      y=${ifDefined(y)}
     >
       ${innerHtmlFragments}
     </tspan>
