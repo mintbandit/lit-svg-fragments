@@ -145,10 +145,6 @@ export const Default = {
     r: 10,
     cx: 50,
     cy: 50,
-    pathLength: 10,
-    strokeWidth: '2',
-    fillOpacity: '1', // Need to restrict to 0 -> 1
-    strokeOpacity: '1', // Need to restrict to 0 -> 1
     stroke: 'not set',
     fill: 'not set',
 

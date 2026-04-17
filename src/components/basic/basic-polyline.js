@@ -1,5 +1,6 @@
 import { html, LitElement, css } from 'lit';
 import { createPolyline } from '../../core/core-shapes.js';
+import { createSVG } from '../../core/core-misc.js';
 
 /**
  * A component that creates a basic SVG polyline using the createPolyline
@@ -33,15 +34,14 @@ export default class BasicPolyline extends LitElement {
   `;
 
   static properties = {
-    // TODO for testing only
+    // For controlling size of canvas
     svgWidth: { attribute: 'svg-width', type: Number, reflect: true },
     svgHeight: { attribute: 'svg-height', type: Number, reflect: true },
 
     // Dimensions
     points: { type: String, reflect: true },
 
-    // Style - css will overrule attributes
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke
+    // Styling - css will overrule attributes
     stroke: { type: String, reflect: true },
     strokeDasharray: {
       attribute: 'stroke-dasharray',
@@ -66,7 +66,6 @@ export default class BasicPolyline extends LitElement {
     },
     strokeOpacity: { attribute: 'stroke-opacity', type: String, reflect: true },
     strokeWidth: { attribute: 'stroke-width', type: String, reflect: true },
-
     fill: { type: String, reflect: true },
     fillOpacity: { attribute: 'fill-opacity', type: String, reflect: true },
     fillRule: { attribute: 'fill-rule', type: String, reflect: true },
@@ -77,9 +76,9 @@ export default class BasicPolyline extends LitElement {
 
   render() {
     return html`
-      <svg height=${this.svgHeight} width=${this.svgWidth}>
-        ${createPolyline(this)}
-      </svg>
+      ${createSVG({ height: this.svgHeight, width: this.svgWidth }, [
+        createPolyline(this),
+      ])}
     `;
   }
 }

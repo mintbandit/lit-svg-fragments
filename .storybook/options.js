@@ -17,10 +17,10 @@ export const colors = [
 ];
 
 /**
- * If choice is 'not set' then sets the attribute to empty string.
+ * If choice is 'not set' then sets the attribute to null string.
  * Lit's ifDefined directive will then remove the attribute.
  */
-export const choice = attribute => (attribute === 'not set' ? '' : attribute);
+export const choice = attribute => (attribute === 'not set' ? null : attribute);
 
 /**
  * Generates an object with properties set to { table: { disable: true } }

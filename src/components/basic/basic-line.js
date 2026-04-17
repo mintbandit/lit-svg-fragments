@@ -1,5 +1,6 @@
 import { html, LitElement, css } from 'lit';
 import { createLine } from '../../core/core-shapes.js';
+import { createSVG } from '../../core/core-misc.js';
 
 /**
  * A component that creates a basic SVG Line using the createLine
@@ -31,19 +32,18 @@ export default class BasicLine extends LitElement {
   `;
 
   static properties = {
-    // TODO for testing only
+    // For controlling size of canvas
     svgWidth: { attribute: 'svg-width', type: Number, reflect: true },
     svgHeight: { attribute: 'svg-height', type: Number, reflect: true },
 
     // Dimensions
-    // TODO all 4 can be % values -> must be string to support in demo
+    // All 4 can be % values -> must be string to support in demo
     x1: { type: Number, reflect: true },
     x2: { type: Number, reflect: true },
     y1: { type: Number, reflect: true },
     y2: { type: Number, reflect: true },
 
-    // Style - css will overrule attributes
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke
+    // Styling - css will overrule attributes
     stroke: { type: String, reflect: true },
     strokeDasharray: {
       attribute: 'stroke-dasharray',
@@ -56,32 +56,18 @@ export default class BasicLine extends LitElement {
       reflect: true,
     },
     strokeLinecap: { attribute: 'stroke-linecap', type: String, reflect: true },
-    // strokeLinejoin: { attribute: 'stroke-linejoin', type: String, reflect: true },
-    // strokeMiterlimit: { attribute: 'stroke-miterlimit', type: String, reflect: true },
     strokeOpacity: { attribute: 'stroke-opacity', type: String, reflect: true },
     strokeWidth: { attribute: 'stroke-width', type: String, reflect: true },
 
-    // fill: { type: String, reflect: true },
-    // fillOpacity: { attribute: 'fill-opacity', type: String, reflect: true },
-    // fillRule: { attribute: 'fill-rule', type: String, reflect: true },
-
     // Use with dasharray
     pathLength: { attribute: 'path-length', type: Number, reflect: true },
-
-    // N/A attributes on Line based on MDN docs
-    //  equivalent css page says they apply, css inheritance only?
-    // stroke-linejoin
-    // stroke-miterlimit
-    // fill
-    // fill-opacity
-    // fill-rule
   };
 
   render() {
     return html`
-      <svg height=${this.svgHeight} width=${this.svgWidth}>
-        ${createLine(this)}
-      </svg>
+      ${createSVG({ height: this.svgHeight, width: this.svgWidth }, [
+        createLine(this),
+      ])}
     `;
   }
 }

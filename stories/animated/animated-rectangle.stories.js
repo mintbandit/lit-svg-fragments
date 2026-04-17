@@ -13,7 +13,7 @@ import {
   hideControls,
 } from '../../.storybook/options.js';
 import { page } from '../../.storybook/page.jsx';
-import markdown from './animated-circle.md?raw';
+import markdown from './animated-rectangle.md?raw';
 
 if (!customElements.get('animated-ellipse')) {
   customElements.define('animated-rectangle', AnimatedRectangle);
@@ -158,7 +158,6 @@ export const Default = {
     y: 50,
     width: 20,
     height: 40,
-    pathLength: 10,
     strokeWidth: '2',
     strokeLinejoin: 'not set',
     stroke: 'not set',

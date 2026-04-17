@@ -1,5 +1,6 @@
 import { html, LitElement, css } from 'lit';
 import { createText } from '../../core/core-text.js';
+import { createSVG } from '../../core/core-misc.js';
 
 /**
  * A component that creates a basic SVG text using the createText
@@ -50,20 +51,19 @@ export default class BasicText extends LitElement {
   `;
 
   static properties = {
-    // TODO for testing only
+    // For controlling size of canvas
     svgWidth: { attribute: 'svg-width', type: Number, reflect: true },
     svgHeight: { attribute: 'svg-height', type: Number, reflect: true },
     displayText: { attribute: 'display-text', type: String, reflect: true },
 
     // Dimensions
-    // TODO all 4 can be % values -> must be string to support in demo
+    // All 4 can be % values -> must be string to support in demo
     dx: { type: Number, reflect: true },
     dy: { type: Number, reflect: true },
     x: { type: Number, reflect: true },
     y: { type: Number, reflect: true },
 
-    // Style - css will overrule attributes
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke
+    // Styling - css will overrule attributes
     stroke: { type: String, reflect: true },
     strokeDasharray: {
       attribute: 'stroke-dasharray',
@@ -88,11 +88,9 @@ export default class BasicText extends LitElement {
     },
     strokeOpacity: { attribute: 'stroke-opacity', type: String, reflect: true },
     strokeWidth: { attribute: 'stroke-width', type: String, reflect: true },
-
     fill: { type: String, reflect: true },
     fillOpacity: { attribute: 'fill-opacity', type: String, reflect: true },
     fillRule: { attribute: 'fill-rule', type: String, reflect: true },
-
     lengthAdjust: { attribute: 'length-adjust', type: String, reflect: true },
     // Can be % -> must be string to support in demo
     rotate: { type: String, reflect: true },
@@ -105,7 +103,6 @@ export default class BasicText extends LitElement {
     // Can be % -> must be string to support in demo
     textLength: { attribute: 'text-length', type: Number, reflect: true },
     textRendering: { attribute: 'text-rendering', type: String, reflect: true },
-
     fontFamily: { attribute: 'font-family', type: String, reflect: true },
     fontSize: { attribute: 'font-size', type: String, reflect: true },
     fontSizeAdjust: {
@@ -124,9 +121,9 @@ export default class BasicText extends LitElement {
 
   render() {
     return html`
-      <svg height=${this.svgHeight} width=${this.svgWidth}>
-        ${createText(this, this.displayText)}
-      </svg>
+      ${createSVG({ height: this.svgHeight, width: this.svgWidth }, [
+        createText(this, this.displayText),
+      ])}
     `;
   }
 }

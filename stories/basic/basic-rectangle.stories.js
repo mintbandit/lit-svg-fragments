@@ -28,8 +28,8 @@ const defaultTemplate = args => html`
     y=${args.y}
     width=${args.width}
     height=${args.height}
-    rx=${args.rx}
-    ry=${args.ry}
+    rx=${ifDefined(args.rx)}
+    ry=${ifDefined(args.ry)}
     stroke=${ifDefined(choice(args.stroke))}
     stroke-dasharray=${ifDefined(args.strokeDasharray)}
     stroke-dashoffset=${ifDefined(args.strokeDashoffset)}

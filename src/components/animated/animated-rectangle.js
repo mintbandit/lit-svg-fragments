@@ -1,6 +1,7 @@
 import { html, LitElement, css } from 'lit';
 import { createRectangle } from '../../core/core-shapes.js';
 import { createAnimate } from '../../core/core-animation.js';
+import { createSVG } from '../../core/core-misc.js';
 
 /**
  * A component that creates an animated SVG rectangle using the createRectangle
@@ -59,12 +60,12 @@ export default class AnimatedRectangle extends LitElement {
   `;
 
   static properties = {
-    // TODO for testing only
+    // For controlling size of canvas
     svgWidth: { attribute: 'svg-width', type: Number, reflect: true },
     svgHeight: { attribute: 'svg-height', type: Number, reflect: true },
 
     // Dimensions
-    // TODO all 6 can be % values -> must be string to support in demo
+    // All 6 can be % values -> must be string to support in demo
     x: { type: Number, reflect: true },
     y: { type: Number, reflect: true },
     width: { type: Number, reflect: true },
@@ -72,8 +73,7 @@ export default class AnimatedRectangle extends LitElement {
     rx: { type: Number, reflect: true },
     ry: { type: Number, reflect: true },
 
-    // Style - css will overrule attributes
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/stroke
+    // Styling - css will overrule attributes
     stroke: { type: String, reflect: true },
     strokeDasharray: {
       attribute: 'stroke-dasharray',
@@ -85,7 +85,6 @@ export default class AnimatedRectangle extends LitElement {
       type: String,
       reflect: true,
     },
-    // strokeLinecap: { attribute: 'stroke-linecap', type: String, reflect: true },
     strokeLinejoin: {
       attribute: 'stroke-linejoin',
       type: String,
@@ -98,18 +97,11 @@ export default class AnimatedRectangle extends LitElement {
     },
     strokeOpacity: { attribute: 'stroke-opacity', type: String, reflect: true },
     strokeWidth: { attribute: 'stroke-width', type: String, reflect: true },
-
     fill: { type: String, reflect: true },
     fillOpacity: { attribute: 'fill-opacity', type: String, reflect: true },
-    // fillRule: { attribute: 'fill-rule', type: String, reflect: true },
 
     // Use with dasharray
     pathLength: { attribute: 'path-length', type: Number, reflect: true },
-
-    // N/A attributes on rectangle based on MDN docs
-    //  equivalent css page says they apply, css inheritance only?
-    // stroke-linecap
-    // fill-rule
 
     // animation options
     // accumulate
@@ -242,8 +234,8 @@ export default class AnimatedRectangle extends LitElement {
       pathLength,
     } = this;
     return html`
-      <svg height=${this.svgHeight} width=${this.svgWidth}>
-        ${createRectangle(
+      ${createSVG({ height: this.svgHeight, width: this.svgWidth }, [
+        createRectangle(
           {
             x,
             y,
@@ -263,8 +255,8 @@ export default class AnimatedRectangle extends LitElement {
             pathLength,
           },
           [createAnimate(this)],
-        )}
-      </svg>
+        ),
+      ])}
     `;
   }
 }

@@ -16,9 +16,7 @@
 
 ```html
 <svg height="60" width="120">
-  <text
-    x="15" y="35"
-  >
+  <text x="15" y="35">
     Hello World
   </text>
 </svg>
