@@ -5,6 +5,7 @@ import {
   colors,
   choice,
   strokeLinecap,
+  strokeLinejoin,
   fillRule,
   hideControls,
 } from '../../.storybook/options.js';
@@ -60,6 +61,10 @@ export default {
       control: 'select',
       options: strokeLinecap,
     },
+    strokeLinejoin: {
+      control: 'select',
+      options: strokeLinejoin,
+    },
     fill: {
       control: 'select',
       options: colors,
@@ -94,5 +99,6 @@ export const Default = {
     fill: 'transparent',
     fillRule: 'not set',
     strokeLinecap: 'not set',
+    strokeLinejoin: 'not set',
   },
 };

@@ -193,3 +193,80 @@ export const markerUnits = ['not set', 'userSpaceOnUse', 'strokeWidth'];
  * @type {string[]}
  */
 export const lengthAdjust = ['not set', 'spacing', 'spacingAndGlyphs'];
+
+/**
+ * Available options for text-overflow attribute
+ *
+ * @type {string[]}
+ */
+export const textAnchor = ['not set', 'start', 'middle', 'end'];
+
+/**
+ * Available options for text-overflow attribute
+ *
+ * @type {string[]}
+ */
+export const textOverflow = ['not set', 'clip', 'ellipses'];
+
+/**
+ * Available options for text-rendering attribute
+ *
+ * @type {string[]}
+ */
+export const textRendering = [
+  'not set',
+  'auto',
+  'optimizeSpeed',
+  'optimizeLegibility',
+  'geometricPrecision',
+];
+
+/**
+ * Available options for method attribute
+ *
+ * @type {string[]}
+ */
+export const method = ['not set', 'align', 'stretch'];
+
+/**
+ * Available options for side attribute
+ *
+ * @type {string[]}
+ */
+export const side = ['not set', 'left', 'right'];
+
+/**
+ * Available options for spacing attribute
+ *
+ * @type {string[]}
+ */
+export const spacing = ['not set', 'auto', 'exact'];
+
+/**
+ * Available options for font-style attribute
+ *
+ * @type {string[]}
+ */
+export const fontStyle = ['not set', 'normal', 'italic', 'oblique'];
+
+/**
+ * Available options for font-weight attribute
+ *
+ * @type {string[]}
+ */
+export const fontWeight = ['not set', 'normal', 'bold', 'bolder', 'lighter'];
+
+/**
+ * Some options for font-family attribute
+ *
+ * @type {string[]}
+ */
+export const fontFamily = [
+  'not set',
+  'serif',
+  'san-serif',
+  'monospace',
+  'cursive',
+  'fantasy',
+  'system-ui',
+];

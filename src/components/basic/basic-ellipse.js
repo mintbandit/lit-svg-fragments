@@ -33,7 +33,6 @@ export default class BasicEllipse extends LitElement {
 
   static properties = {
     // TODO for testing only
-    //  Values likely to be auto-generated from radius
     svgWidth: { attribute: 'svg-width', type: Number, reflect: true },
     svgHeight: { attribute: 'svg-height', type: Number, reflect: true },
 

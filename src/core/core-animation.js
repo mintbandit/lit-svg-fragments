@@ -7,6 +7,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 // TODO align api with native naming.
 //  Problem with 'fill' on exising demo components. Not the same.
+//  Rotate also consumed by text elements
 
 // TODO missing attributes
 //  - color-interpolation - animate only
