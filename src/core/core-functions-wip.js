@@ -90,26 +90,6 @@ export const createDefs = ({}, innerHtmlFragments = nothing) => {
   `;
 };
 
-// TODO each child will overlap the previous
-//  think child index is equal to z-index
-//  child 2 will overlap child 1
-//  child 3 will overlap child 2 and so on
-//  Unless fills are transparent you won't be able to see anything behind
-export const createGroup = ({}, innerHtmlFragments = nothing) => {
-  // Apply common style to group of elements
-  // TODO supports global attributes
-  return svg`
-    <g
-      fill="white"
-      stroke="black"
-      stroke-width="5"
-    >
-      <!-- requires child elements --->
-      ${innerHtmlFragments}
-    </g>
-  `;
-};
-
 // TODO this one can be completed in full
 export const createImage = ({}, innerHtmlFragments = nothing) => {
   return svg`
@@ -257,27 +237,6 @@ export const createSwitch = ({}, innerHtmlFragments = nothing) => {
       <!-- requires child elements --->
       ${innerHtmlFragments}
     </switch>>
-  `;
-};
-
-// TODO Yes, can be nested in another svg
-export const createSVG = ({}, innerHtmlFragments = nothing) => {
-  return svg`
-    <svg
-      baseProfile="deprecated"
-      clip="deprecated"
-      clip-path=""
-      height=""
-      preserveAspectRatio=""
-      version=""
-      viewBox=""
-      width=""
-      x=""
-      y=""
-    >
-      <!-- requires child elements --->
-      ${innerHtmlFragments}
-    </svg>
   `;
 };
 
