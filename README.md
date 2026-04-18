@@ -4,6 +4,11 @@
 
 A repository which experiments with Scalar Vector Graphics (SVG) and Lit Element. 
 
+This repository contains a storybook playground which some simple SVG shapes and controls to manipulate a sub-set of the
+configurable attributes.
+
+This storybook also includes an experiment JSON to SVG parser which can be used to construct more complex SVG images.
+
 ## Run Storybook
 
 To run storybook:

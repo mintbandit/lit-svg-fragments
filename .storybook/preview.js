@@ -18,7 +18,7 @@ const preview = {
     },
     options: {
       storySort: {
-        order: ['Basic Shapes', 'Basic Text', 'Animation'],
+        order: ['Parser', 'Basic Shapes', 'Basic Text', 'Animation'],
       },
     },
   },
